@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "275820378110",
+    "firebase_url": "https://kalenderpuasa-41269.firebaseio.com",
+    "project_id": "kalenderpuasa-41269",
+    "storage_bucket": "kalenderpuasa-41269.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275820378110:android:e4535af1dfd348367032af",
+        "android_client_info": {
+          "package_name": "com.muslimApp.kalenderpuasasunnah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275820378110-3vl3do66j95dvut9ruvc66q4h37hf0p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.muslimApp.kalenderpuasasunnah",
+            "certificate_hash": "c1d9f047f62e88f5f48610df70ac689a41570a44"
+          }
+        },
+        {
+          "client_id": "275820378110-tteo5o08m9geqmufg70f71cl6p6td9l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChRJ6tkjDKhNHqGYpq2-yfq5h6hYYO0Sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275820378110-tteo5o08m9geqmufg70f71cl6p6td9l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

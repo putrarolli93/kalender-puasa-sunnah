@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Kalender Puasa</string>
+    <string name="later">SKIP</string>
+    <string name="update_app">App Update Available</string>
+    <string name="update_now">UPDATE NOW</string>
+    <string name="dialog_update_available_message">You are on an older version. You can use the app only if you update it.</string>
+
+</resources>

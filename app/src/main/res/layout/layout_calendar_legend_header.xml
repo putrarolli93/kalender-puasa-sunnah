@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/legendLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="HardcodedText">
+
+        <TextView
+            android:id="@+id/legendText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:text="M"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/legendText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="S"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp"  />
+
+        <TextView
+            android:id="@+id/legendText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="S"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/legendText4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="R"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/legendText5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="K"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/legendText6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:text="J"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp"  />
+
+        <TextView
+            android:id="@+id/legendText7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:text="S"
+            android:background="@color/colorBlackImage"
+            android:textColor="@color/colorWhiteImage"
+            android:textSize="12sp"  />
+
+    </LinearLayout>
+
+</FrameLayout>
+
