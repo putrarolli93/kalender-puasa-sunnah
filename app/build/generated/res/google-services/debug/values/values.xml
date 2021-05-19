@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">275820378110-tteo5o08m9geqmufg70f71cl6p6td9l0.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://kalenderpuasa-41269.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">275820378110</string>
+    <string name="google_api_key" translatable="false">AIzaSyChRJ6tkjDKhNHqGYpq2-yfq5h6hYYO0Sk</string>
+    <string name="google_app_id" translatable="false">1:275820378110:android:e4535af1dfd348367032af</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyChRJ6tkjDKhNHqGYpq2-yfq5h6hYYO0Sk</string>
+    <string name="google_storage_bucket" translatable="false">kalenderpuasa-41269.appspot.com</string>
+    <string name="project_id" translatable="false">kalenderpuasa-41269</string>
+</resources>

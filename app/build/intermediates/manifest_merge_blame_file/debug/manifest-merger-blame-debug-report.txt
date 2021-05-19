@@ -1,0 +1,288 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.muslimApp.kalenderpuasasunnah"
+4    android:versionCode="3"
+5    android:versionName="1.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.WAKE_LOCK" />
+11-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:5:5-68
+11-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:5:22-65
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:22:5-79
+12-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:22:22-76
+13    <uses-permission android:name="android.permission.INTERNET" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+13-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:23:5-67
+13-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:23:22-64
+14    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+14-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:26:5-82
+14-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:26:22-79
+15    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+15-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:26:5-110
+15-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:26:22-107
+16
+17    <application
+17-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:8:5-59:19
+18        android:name="com.muslimApp.kalenderpuasasunnah.KalendarApp"
+18-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:9:9-69
+19        android:allowBackup="true"
+19-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:10:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/e7c31b5646a20fc524d4a43c7adb8560/core-1.2.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:11:9-43
+23        android:label="@string/app_name"
+23-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:12:9-41
+24        android:supportsRtl="true"
+24-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:13:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppThemeImageMain" >
+26-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:14:9-49
+27        <activity
+27-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:16:9-25:20
+28            android:name="com.muslimApp.kalenderpuasasunnah.SplashActivity"
+28-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:17:13-76
+29            android:screenOrientation="portrait"
+29-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:19:13-49
+30            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+30-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:18:13-69
+31            <intent-filter>
+31-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:20:13-24:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:21:17-69
+32-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:21:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:23:17-77
+34-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:23:27-74
+35            </intent-filter>
+36        </activity>
+37        <activity
+37-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:27:9-30:73
+38            android:name="com.muslimApp.kalenderpuasasunnah.MainActivity"
+38-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:28:13-74
+39            android:screenOrientation="portrait"
+39-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:29:13-49
+40            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+40-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:30:13-70
+41        <activity
+41-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:32:9-36:73
+42            android:name="com.muslimApp.kalenderpuasasunnah.detail.DetailPuasaActivity"
+42-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:33:13-88
+43            android:parentActivityName="com.muslimApp.kalenderpuasasunnah.MainActivity"
+43-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:35:13-88
+44            android:screenOrientation="portrait"
+44-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:34:13-49
+45            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+45-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:36:13-70
+46
+47        <service android:name="com.muslimApp.kalenderpuasasunnah.fcm.MyFirebaseMessagingService" >
+47-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:38:9-42:19
+47-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:38:18-64
+48            <intent-filter>
+48-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:39:13-41:29
+49                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+49-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:40:17-78
+49-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:40:25-75
+50            </intent-filter>
+51        </service>
+52        <service
+52-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:44:9-47:39
+53            android:name="com.muslimApp.kalenderpuasasunnah.utils.MyService"
+53-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:45:13-44
+54            android:enabled="true"
+54-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:46:13-35
+55            android:exported="true" />
+55-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:47:13-36
+56
+57        <receiver
+57-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:49:9-58:20
+58            android:name="com.muslimApp.kalenderpuasasunnah.utils.AlarmReceiver"
+58-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:50:13-48
+59            android:directBootAware="true"
+59-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:51:13-43
+60            android:enabled="true"
+60-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:52:13-35
+61            android:exported="true" >
+61-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:53:13-36
+62            <intent-filter>
+62-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:55:13-57:29
+63                <action android:name="android.intent.action.BOOT_COMPLETED" />
+63-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:56:17-79
+63-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:56:25-76
+64            </intent-filter>
+65        </receiver>
+66
+67        <service
+67-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:12:9-18:19
+68            android:name="com.google.firebase.components.ComponentDiscoveryService"
+68-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:13:13-84
+69            android:directBootAware="true"
+69-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+70            android:exported="false" >
+70-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:14:13-37
+71            <meta-data
+71-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:15:13-17:85
+72                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.ktx.FirebaseRemoteConfigKtxRegistrar"
+72-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:16:17-132
+73                android:value="com.google.firebase.components.ComponentRegistrar" />
+73-->[com.google.firebase:firebase-config-ktx:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3fc9a956fb62167747c2880d973376c9/firebase-config-ktx-19.2.0/AndroidManifest.xml:17:17-82
+74            <meta-data
+74-->[com.google.firebase:firebase-analytics-ktx:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/17d946ecaaeeb5021f86eefc9056a79b/firebase-analytics-ktx-17.4.4/AndroidManifest.xml:11:13-13:85
+75                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
+75-->[com.google.firebase:firebase-analytics-ktx:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/17d946ecaaeeb5021f86eefc9056a79b/firebase-analytics-ktx-17.4.4/AndroidManifest.xml:12:17-126
+76                android:value="com.google.firebase.components.ComponentRegistrar" />
+76-->[com.google.firebase:firebase-analytics-ktx:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/17d946ecaaeeb5021f86eefc9056a79b/firebase-analytics-ktx-17.4.4/AndroidManifest.xml:13:17-82
+77            <meta-data
+77-->[com.google.firebase:firebase-common-ktx:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/918f14392b04f7d9ef242e861eb2c4d6/firebase-common-ktx-19.3.0/AndroidManifest.xml:15:13-17:85
+78                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+78-->[com.google.firebase:firebase-common-ktx:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/918f14392b04f7d9ef242e861eb2c4d6/firebase-common-ktx-19.3.0/AndroidManifest.xml:16:17-113
+79                android:value="com.google.firebase.components.ComponentRegistrar" />
+79-->[com.google.firebase:firebase-common-ktx:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/918f14392b04f7d9ef242e861eb2c4d6/firebase-common-ktx-19.3.0/AndroidManifest.xml:17:17-82
+80            <meta-data
+80-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:32:13-34:85
+81                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+81-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:33:17-96
+82                android:value="com.google.firebase.components.ComponentRegistrar" />
+82-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:34:17-82
+83            <meta-data
+83-->[com.google.firebase:firebase-config:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/51fe468e0652b4cd5fd537b6dd06a7d7/firebase-config-19.2.0/AndroidManifest.xml:32:13-34:85
+84                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar"
+84-->[com.google.firebase:firebase-config:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/51fe468e0652b4cd5fd537b6dd06a7d7/firebase-config-19.2.0/AndroidManifest.xml:33:17-117
+85                android:value="com.google.firebase.components.ComponentRegistrar" />
+85-->[com.google.firebase:firebase-config:19.2.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/51fe468e0652b4cd5fd537b6dd06a7d7/firebase-config-19.2.0/AndroidManifest.xml:34:17-82
+86            <meta-data
+86-->[com.google.firebase:firebase-abt:19.1.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/153d87783caeb86cce097be43036c9c7/firebase-abt-19.1.0/AndroidManifest.xml:13:13-15:85
+87                android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar"
+87-->[com.google.firebase:firebase-abt:19.1.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/153d87783caeb86cce097be43036c9c7/firebase-abt-19.1.0/AndroidManifest.xml:14:17-109
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[com.google.firebase:firebase-abt:19.1.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/153d87783caeb86cce097be43036c9c7/firebase-abt-19.1.0/AndroidManifest.xml:15:17-82
+89            <meta-data
+89-->[com.google.android.gms:play-services-measurement-api:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3b0a2ede0e86409c5f3baabed2f5cd44/play-services-measurement-api-17.4.4/AndroidManifest.xml:30:13-32:85
+90                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+90-->[com.google.android.gms:play-services-measurement-api:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3b0a2ede0e86409c5f3baabed2f5cd44/play-services-measurement-api-17.4.4/AndroidManifest.xml:31:17-139
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[com.google.android.gms:play-services-measurement-api:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3b0a2ede0e86409c5f3baabed2f5cd44/play-services-measurement-api-17.4.4/AndroidManifest.xml:32:17-82
+92            <meta-data
+92-->[com.google.firebase:firebase-installations:16.3.2] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8fba5114bfd8eedc76bff62bdb71ea6e/firebase-installations-16.3.2/AndroidManifest.xml:17:13-19:85
+93                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+93-->[com.google.firebase:firebase-installations:16.3.2] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8fba5114bfd8eedc76bff62bdb71ea6e/firebase-installations-16.3.2/AndroidManifest.xml:18:17-127
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.firebase:firebase-installations:16.3.2] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8fba5114bfd8eedc76bff62bdb71ea6e/firebase-installations-16.3.2/AndroidManifest.xml:19:17-82
+95        </service>
+96        <!--
+97             FirebaseMessagingService performs security checks at runtime,
+98             no need for explicit permissions despite exported="true"
+99        -->
+100        <service
+100-->[com.google.firebase:firebase-messaging:17.3.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8410db2996c22b1a7994ff83d529b383/jetified-firebase-messaging-17.3.4/AndroidManifest.xml:28:9-34:19
+101            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+101-->[com.google.firebase:firebase-messaging:17.3.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8410db2996c22b1a7994ff83d529b383/jetified-firebase-messaging-17.3.4/AndroidManifest.xml:29:13-82
+102            android:exported="true" >
+102-->[com.google.firebase:firebase-messaging:17.3.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/8410db2996c22b1a7994ff83d529b383/jetified-firebase-messaging-17.3.4/AndroidManifest.xml:30:13-36
+103            <intent-filter android:priority="-500" >
+103-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:39:13-41:29
+104                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+104-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:40:17-78
+104-->/Users/putrarolli/Documents/KalenderPuasa/app/src/main/AndroidManifest.xml:40:25-75
+105            </intent-filter>
+106        </service>
+107
+108        <receiver
+108-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:37:9-44:20
+109            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+109-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:38:13-78
+110            android:exported="true"
+110-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:39:13-36
+111            android:permission="com.google.android.c2dm.permission.SEND" >
+111-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:40:13-73
+112            <intent-filter>
+112-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:41:13-43:29
+113                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+113-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:42:17-81
+113-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:42:25-78
+114            </intent-filter>
+115        </receiver>
+116        <!--
+117             FirebaseInstanceIdService performs security checks at runtime,
+118             no need for explicit permissions despite exported="true"
+119        -->
+120        <service
+120-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:50:9-56:19
+121            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+121-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:51:13-77
+122            android:exported="true" >
+122-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:52:13-36
+123            <intent-filter android:priority="-500" >
+123-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:53:13-55:29
+123-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:53:28-51
+124                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+124-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:54:17-80
+124-->[com.google.firebase:firebase-iid:17.0.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/5c5be9151d1514f2c5abae6a161375ec/jetified-firebase-iid-17.0.4/AndroidManifest.xml:54:25-77
+125            </intent-filter>
+126        </service>
+127
+128        <provider
+128-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+129            android:name="com.google.firebase.provider.FirebaseInitProvider"
+129-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+130            android:authorities="com.muslimApp.kalenderpuasasunnah.firebaseinitprovider"
+130-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+131            android:exported="false"
+131-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+132            android:initOrder="100" />
+132-->[com.google.firebase:firebase-common:19.3.0] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/3be82698b963d42f3d9372286ba448c8/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+133
+134        <activity
+134-->[com.google.android.gms:play-services-base:16.0.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/a17594e0b226bb0fc9cea98c0a2d64ae/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+135            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+135-->[com.google.android.gms:play-services-base:16.0.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/a17594e0b226bb0fc9cea98c0a2d64ae/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+136            android:exported="false"
+136-->[com.google.android.gms:play-services-base:16.0.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/a17594e0b226bb0fc9cea98c0a2d64ae/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+137            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+137-->[com.google.android.gms:play-services-base:16.0.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/a17594e0b226bb0fc9cea98c0a2d64ae/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+138
+139        <receiver
+139-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:29:9-33:20
+140            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+140-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:30:13-85
+141            android:enabled="true"
+141-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:31:13-35
+142            android:exported="false" >
+142-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:32:13-37
+143        </receiver>
+144
+145        <service
+145-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:35:9-38:40
+146            android:name="com.google.android.gms.measurement.AppMeasurementService"
+146-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:36:13-84
+147            android:enabled="true"
+147-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:37:13-35
+148            android:exported="false" />
+148-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:38:13-37
+149        <service
+149-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:39:9-43:72
+150            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+150-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:40:13-87
+151            android:enabled="true"
+151-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:41:13-35
+152            android:exported="false"
+152-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:42:13-37
+153            android:permission="android.permission.BIND_JOB_SERVICE" />
+153-->[com.google.android.gms:play-services-measurement:17.4.4] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/75088490b113fccecc0a86ba352e1316/play-services-measurement-17.4.4/AndroidManifest.xml:43:13-69
+154
+155        <meta-data
+155-->[com.google.android.gms:play-services-basement:17.2.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/59a9a559e66b918a4dc535bb8993af44/jetified-play-services-basement-17.2.1/AndroidManifest.xml:23:9-25:69
+156            android:name="com.google.android.gms.version"
+156-->[com.google.android.gms:play-services-basement:17.2.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/59a9a559e66b918a4dc535bb8993af44/jetified-play-services-basement-17.2.1/AndroidManifest.xml:24:13-58
+157            android:value="@integer/google_play_services_version" />
+157-->[com.google.android.gms:play-services-basement:17.2.1] /Users/putrarolli/.gradle/caches/transforms-2/files-2.1/59a9a559e66b918a4dc535bb8993af44/jetified-play-services-basement-17.2.1/AndroidManifest.xml:25:13-66
+158    </application>
+159
+160</manifest>
