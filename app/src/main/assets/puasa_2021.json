@@ -1,0 +1,535 @@
+[
+  {
+    "month": "Januari",
+    "month_number": 1,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1611619200,
+        "masehi": "26-Januari-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1611705600,
+        "masehi": "27-Januari-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1611792000,
+        "masehi": "28-Januari-2020"
+      }
+    ]
+  },
+  {
+    "month": "Februari",
+    "month_number": 2,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1614211200,
+        "masehi": "25-Februari-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1614297600,
+        "masehi": "26-Februari-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1614384000,
+        "masehi": "27-Februari-2020"
+      }
+    ]
+  },
+  {
+    "month": "Maret",
+    "month_number": 3,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1616803200,
+        "masehi": "27-Maret-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1616889600,
+        "masehi": "28-Maret-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1616976000,
+        "masehi": "29-Maret-2020"
+      }
+    ]
+  },
+  {
+    "month": "April",
+    "month_number": 4,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 3
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 3,
+        "tanggal": 1618272000,
+        "masehi": "13-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618358400,
+        "masehi": "14-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618444800,
+        "masehi": "15-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618531200,
+        "masehi": "16-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618617600,
+        "masehi": "17-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618704000,
+        "masehi": "18-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618790400,
+        "masehi": "19-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618876800,
+        "masehi": "20-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1618963200,
+        "masehi": "21-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619049600,
+        "masehi": "22-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619136000,
+        "masehi": "23-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619222400,
+        "masehi": "24-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619308800,
+        "masehi": "25-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619395200,
+        "masehi": "26-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619481600,
+        "masehi": "27-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619568000,
+        "masehi": "28-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619654400,
+        "masehi": "29-April-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619740800,
+        "masehi": "30-April-2020"
+      }
+    ]
+  },
+  {
+    "month": "Mei",
+    "month_number": 5,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      },
+      {
+        "code": 3
+      },
+      {
+        "code": 8
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 3,
+        "tanggal": 1619827200,
+        "masehi": "01-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1619913600,
+        "masehi": "02-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620000000,
+        "masehi": "03-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620086400,
+        "masehi": "04-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620172800,
+        "masehi": "05-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620259200,
+        "masehi": "06-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620345600,
+        "masehi": "07-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620432000,
+        "masehi": "08-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620518400,
+        "masehi": "09-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620604800,
+        "masehi": "10-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620691200,
+        "masehi": "11-Mei-2020"
+      },
+      {
+        "code": 3,
+        "tanggal": 1620777600,
+        "masehi": "12-Mei-2020"
+      },
+      {
+        "code": 8,
+        "tanggal": 1620864000,
+        "masehi": "13-Mei-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1621900800,
+        "masehi": "25-Mei-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1621987200,
+        "masehi": "26-Mei-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1622073600,
+        "masehi": "27-Mei-2020"
+      }
+    ]
+  },
+  {
+    "month": "Juni",
+    "month_number": 6,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1624492800,
+        "masehi": "24-Juni-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1624579200,
+        "masehi": "25-Juni-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1624665600,
+        "masehi": "26-Juni-2020"
+      }
+    ]
+  },
+  {
+    "month": "Juli",
+    "month_number": 7,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      },
+      {
+        "code": 4
+      },
+      {
+        "code": 8
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 4,
+        "tanggal": 1626652800,
+        "masehi": "19-Juli-2020"
+      },
+      {
+        "code": 8,
+        "tanggal": 1626739200,
+        "masehi": "20-Juli-2020"
+      },
+      {
+        "code": 8,
+        "tanggal": 1626825600,
+        "masehi": "21-Juli-2020"
+      },
+      {
+        "code": 8,
+        "tanggal": 1626912000,
+        "masehi": "22-Juli-2020"
+      },
+      {
+        "code": 8,
+        "tanggal": 1626998400,
+        "masehi": "23-Juli-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1627084800,
+        "masehi": "24-Juli-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1627171200,
+        "masehi": "25-Juli-2020"
+      }
+    ]
+  },
+  {
+    "month": "Agustus",
+    "month_number": 8,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      },
+      {
+        "code": 5
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 5,
+        "tanggal": 1629244800,
+        "masehi": "18-Agustus-2020"
+      },
+      {
+        "code": 5,
+        "tanggal": 1629331200,
+        "masehi": "19-Agustus-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1629590400,
+        "masehi": "22-Agustus-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1629676800,
+        "masehi": "23-Agustus-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1629763200,
+        "masehi": "24-Agustus-2020"
+      }
+    ]
+  },
+  {
+    "month": "September",
+    "month_number": 9,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1632096000,
+        "masehi": "20-September-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1632182400,
+        "masehi": "21-September-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1632268800,
+        "masehi": "22-September-2020"
+      }
+    ]
+  },
+  {
+    "month": "Oktober",
+    "month_number": 10,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1634688000,
+        "masehi": "20-Oktober-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1634774400,
+        "masehi": "21-Oktober-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1634860800,
+        "masehi": "22-Oktober-2020"
+      }
+    ]
+  },
+  {
+    "month": "November",
+    "month_number": 11,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1637193600,
+        "masehi": "18-November-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1637280000,
+        "masehi": "19-November-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1637366400,
+        "masehi": "20-November-2020"
+      }
+    ]
+  },
+  {
+    "month": "Desember",
+    "month_number": 12,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1639699200,
+        "masehi": "17-Desember-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1639785600,
+        "masehi": "18-Desember-2020"
+      },
+      {
+        "code": 2,
+        "tanggal": 1639872000,
+        "masehi": "19-Desember-2020"
+      }
+    ]
+  }
+]

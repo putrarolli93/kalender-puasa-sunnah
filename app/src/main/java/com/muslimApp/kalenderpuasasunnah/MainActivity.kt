@@ -15,7 +15,6 @@ import android.text.TextUtils
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -27,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         checkForUpdate()
         scMain.isNestedScrollingEnabled = false
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "libur.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2021.json")
         val gson = Gson()
         val tanggalType = object : TypeToken<List<TanggalModel>>() {}.type
 
@@ -699,10 +699,15 @@ class MainActivity : AppCompatActivity() {
 
         val appVersion: String = getAppVersion(this)
         val remoteConfig = FirebaseRemoteConfig.getInstance()
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setMinimumFetchIntervalInSeconds(if (BuildConfig.DEBUG) 0 else 3600)
+            .build()
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetch(0)
 
-        val currentVersion =
-            remoteConfig.getString("min_version_of_app")
         val minVersion =
+            remoteConfig.getString("min_version_of_app")
+        val currentVersion =
             remoteConfig.getString("latest_version_of_app")
         if (!TextUtils.isEmpty(minVersion) && !TextUtils.isEmpty(appVersion) && checkMandateVersionApplicable(
                 getAppVersionWithoutAlphaNumeric(minVersion),
@@ -768,7 +773,7 @@ class MainActivity : AppCompatActivity() {
             }.create()
         }
         val dialog: AlertDialog = dialogBuilder.create()
-//        dialog.show()
+        dialog.show()
     }
 
     private fun moveForward() {
