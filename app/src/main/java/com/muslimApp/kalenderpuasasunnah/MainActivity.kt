@@ -95,12 +95,12 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
-        adView.adListener = object: AdListener() {
+        adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 adView.visibility = View.VISIBLE
             }
 
-            override fun onAdFailedToLoad(adError : LoadAdError) {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
                 adView.visibility = View.GONE
             }
 
@@ -749,15 +749,22 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
             )
         ) {
             onUpdateNeeded(true)
-        } else if (!TextUtils.isEmpty(currentVersion) && !TextUtils.isEmpty(appVersion) && !TextUtils.equals(
-                currentVersion,
-                appVersion
-            )
-        ) {
-            onUpdateNeeded(false)
-        } else {
+        }
+//        else if (!TextUtils.isEmpty(currentVersion) && !TextUtils.isEmpty(appVersion) && !TextUtils.equals(
+//                currentVersion,
+//                appVersion
+//            )
+//        ) {
+//            onUpdateNeeded(false)
+//        }
+        else {
             moveForward()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkForUpdate()
     }
 
     private fun checkMandateVersionApplicable(
@@ -767,7 +774,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return try {
             val minVersionInt = minVersion.toInt()
             val appVersionInt = appVersion.toInt()
-            minVersionInt > appVersionInt
+            minVersionInt < appVersionInt
         } catch (exp: NumberFormatException) {
             false
         }
@@ -781,7 +788,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         } catch (e: PackageManager.NameNotFoundException) {
             Log.e("TAG", e.message)
         }
-        return result?:""
+        return result ?: ""
     }
 
     private fun getAppVersionWithoutAlphaNumeric(result: String): String {
@@ -800,12 +807,11 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                 openAppOnPlayStore(this, null)
             }
 
-        if (!isMandatoryUpdate) {
-            dialogBuilder.setNegativeButton(getString(R.string.later)) { dialog, which ->
-                moveForward()
-                dialog?.dismiss()
-            }.create()
-        }
+        dialogBuilder.setNegativeButton("EXIT") { dialog, which ->
+//            moveForward()
+//            dialog?.dismiss()
+            finishAffinity()
+        }.create()
         val dialog: AlertDialog = dialogBuilder.create()
         dialog.show()
     }
@@ -846,7 +852,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
             gotoDetail(code)
         }
 
-        mInterstitialAd.adListener = object: AdListener() {
+        mInterstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
             }
