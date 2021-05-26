@@ -12,7 +12,7 @@ import com.muslimApp.kalenderpuasasunnah.detail.DetailPuasaActivity
 import com.muslimApp.kalenderpuasasunnah.model.TanggalModel
 import kotlinx.android.synthetic.main.layout_item_legend.view.*
 
-class LegendAdapter : RecyclerView.Adapter<LegendAdapter.LegendHolder>() {
+class LegendAdapter(val listener: OnLegendedListener) : RecyclerView.Adapter<LegendAdapter.LegendHolder>() {
 
     private var tanggalModel: TanggalModel? = null
 
@@ -28,7 +28,7 @@ class LegendAdapter : RecyclerView.Adapter<LegendAdapter.LegendHolder>() {
 
     override fun onBindViewHolder(holder: LegendHolder, position: Int) {
         this.tanggalModel?.let {
-            holder.bind(it.puasaCode[position].code)
+            holder.bind(it.puasaCode[position].code, listener)
         }
     }
 
@@ -39,7 +39,7 @@ class LegendAdapter : RecyclerView.Adapter<LegendAdapter.LegendHolder>() {
 
     class LegendHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(code: Int) {
+        fun bind(code: Int, listener: OnLegendedListener) {
             view.apply {
                 when(code) {
                     1 -> {
@@ -74,13 +74,15 @@ class LegendAdapter : RecyclerView.Adapter<LegendAdapter.LegendHolder>() {
                     }
                 }
                 btnShow.setOnClickListener {
-                    val intent = Intent(context, DetailPuasaActivity::class.java)
-                    intent.putExtra("code", code)
-                    startActivity(context, intent, null)
+                    listener?.onLegendClick(code)
                 }
 
             }
         }
+    }
+
+    interface OnLegendedListener {
+        fun onLegendClick(code: Int)
     }
 
 }

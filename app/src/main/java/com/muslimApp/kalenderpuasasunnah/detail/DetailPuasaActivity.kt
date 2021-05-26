@@ -2,6 +2,8 @@ package com.muslimApp.kalenderpuasasunnah.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.gms.ads.AdRequest
 import com.muslimApp.kalenderpuasasunnah.R
 import kotlinx.android.synthetic.main.activity_detail_puasa.*
 
@@ -10,6 +12,11 @@ class DetailPuasaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_puasa)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
         var code: Int = intent.getIntExtra("code",0)
         code?.let {
             when(code) {

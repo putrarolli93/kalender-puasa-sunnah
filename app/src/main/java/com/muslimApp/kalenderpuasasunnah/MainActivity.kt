@@ -24,6 +24,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.appopen.AppOpenAd.load
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -37,6 +40,7 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
+import com.muslimApp.kalenderpuasasunnah.detail.DetailPuasaActivity
 import com.muslimApp.kalenderpuasasunnah.model.TanggalModel
 import com.muslimApp.kalenderpuasasunnah.model.TanggalPuasa
 import com.muslimApp.kalenderpuasasunnah.utils.AlarmReceiver
@@ -55,7 +59,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     private val daysOfWeek = daysOfWeekFromLocale()
     private val today = LocalDate.now()
@@ -69,6 +73,7 @@ class MainActivity : AppCompatActivity() {
     private var monthSelected: Int = 0
     private var yearSelectDate = 0
     lateinit var adapter: LegendAdapter
+    private lateinit var mInterstitialAd: InterstitialAd
 
 
     //    private var pendingIntent: PendingIntent? = null
@@ -85,6 +90,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
+
+        MobileAds.initialize(this)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+        adView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                adView.visibility = View.VISIBLE
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                adView.visibility = View.GONE
+            }
+
+            override fun onAdOpened() {
+            }
+
+            override fun onAdClicked() {
+            }
+
+            override fun onAdClosed() {
+            }
+        }
+
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd?.adUnitId = "ca-app-pub-3844487552229866/7298641917"
+        mInterstitialAd?.loadAd(adRequest)
+
         checkForUpdate()
         scMain.isNestedScrollingEnabled = false
         val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2021.json")
@@ -231,8 +264,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpList() {
         rvLegendLayout.layoutManager = LinearLayoutManager(this)
-        adapter = LegendAdapter()
+        adapter = LegendAdapter(this)
         rvLegendLayout.adapter = adapter
+        rvLegendLayout.isNestedScrollingEnabled = false
     }
 
     private fun setUpCalendar() {
@@ -802,6 +836,50 @@ class MainActivity : AppCompatActivity() {
         } else if (error_msg != null) {
             Toast.makeText(this, error_msg, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onLegendClick(code: Int) {
+        if (mInterstitialAd.isLoaded) {
+            mInterstitialAd?.show()
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.")
+            gotoDetail(code)
+        }
+
+        mInterstitialAd.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the interstitial ad is closed.
+                mInterstitialAd.loadAd(AdRequest.Builder().build())
+                gotoDetail(code)
+            }
+        }
+
+    }
+
+    private fun gotoDetail(code: Int) {
+        val intent = Intent(this, DetailPuasaActivity::class.java)
+        intent.putExtra("code", code)
+        startActivity(intent)
     }
 
 }
