@@ -774,7 +774,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return try {
             val minVersionInt = minVersion.toInt()
             val appVersionInt = appVersion.toInt()
-            minVersionInt < appVersionInt
+            appVersionInt < minVersionInt
         } catch (exp: NumberFormatException) {
             false
         }
