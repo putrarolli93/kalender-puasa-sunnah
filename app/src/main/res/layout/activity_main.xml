@@ -29,6 +29,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <ImageView
+                android:id="@+id/ivLiveMecca"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintEnd_toEndOf="@id/imgMain"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/kaba" />
+
+            <ImageView
+                android:id="@+id/ivLiveMadina"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintEnd_toStartOf="@id/ivLiveMecca"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/nabawi" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clHeader"
                 android:layout_width="match_parent"

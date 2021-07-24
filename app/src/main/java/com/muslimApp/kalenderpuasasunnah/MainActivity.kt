@@ -92,6 +92,9 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         setContentView(R.layout.activity_main)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
 
+        ivLiveMecca.setOnClickListener { goWatchLive("mekah") }
+        ivLiveMadina.setOnClickListener { goWatchLive("madinah") }
+
         MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
@@ -137,6 +140,12 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         alarmID.forEach {
             alarmCihuy(it)
         }
+    }
+
+    private fun goWatchLive(param: String) {
+        val intent = Intent(this, LiveActivity::class.java)
+        intent.putExtra("param", param)
+        startActivity(intent)
     }
 
     private fun showDialogTimePrayerReminder() {

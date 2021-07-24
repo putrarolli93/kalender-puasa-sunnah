@@ -89,11 +89,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         String notif_content = "";
         String id = itn.getStringExtra("id");
         if (id.contains("100")) {
-            notif_title = "kuy dhuha";
-            notif_content = "sholat dhuha";
+            notif_title = "Sholat Dhuha..";
+            notif_content = "Halo..sudah masuk jam dhuha, yuk shalat dhuha :)";
         }else if(id.contains("101")) {
-            notif_title = "kuy tahajud";
-            notif_content = "sholat tahajud";
+            notif_title = "Sholat Tahajud..";
+            notif_content = "Halo..nanti malam tahajud yuk:)";
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
