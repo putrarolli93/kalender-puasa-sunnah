@@ -121,9 +121,9 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         mInterstitialAd?.adUnitId = "ca-app-pub-3844487552229866/7298641917"
         mInterstitialAd?.loadAd(adRequest)
 
-        checkForUpdate()
+//        checkForUpdate()
         scMain.isNestedScrollingEnabled = false
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2021.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2025.json")
         val gson = Gson()
         val tanggalType = object : TypeToken<List<TanggalModel>>() {}.type
 
@@ -137,15 +137,15 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 //        stopAlarmManager()
 //        runAlarm()
 //        showDialogTimePrayerReminder()
-        alarmID.forEach {
-            alarmCihuy(it)
-        }
+//        alarmID.forEach {
+//            alarmCihuy(it)
+//        }
     }
 
     private fun goWatchLive(param: String) {
-        val intent = Intent(this, LiveActivity::class.java)
-        intent.putExtra("param", param)
-        startActivity(intent)
+//        val intent = Intent(this, LiveActivity::class.java)
+//        intent.putExtra("param", param)
+//        startActivity(intent)
     }
 
     private fun showDialogTimePrayerReminder() {
@@ -773,7 +773,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     override fun onResume() {
         super.onResume()
-        checkForUpdate()
+//        checkForUpdate()
     }
 
     private fun checkMandateVersionApplicable(

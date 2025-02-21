@@ -1,0 +1,498 @@
+[
+  {
+    "month": "Januari",
+    "month_number": 1,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1736726400,
+        "masehi": "13-Januari-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1736812800,
+        "masehi": "14-Januari-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1736899200,
+        "masehi": "15-Januari-2025"
+      }
+    ]
+  },
+  {
+    "month": "Februari",
+    "month_number": 2,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1739318400,
+        "masehi": "12-Februari-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1739404800,
+        "masehi": "13-Februari-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1739491200,
+        "masehi": "14-Februari-2025"
+      }
+    ]
+  },
+  {
+    "month": "Maret",
+    "month_number": 3,
+    "puasa_code": [
+      {
+        "code": 3
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 3,
+        "tanggal": 1740762000,
+        "masehi": "01-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1740848400,
+        "masehi": "02-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1740934800,
+        "masehi": "03-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741021200,
+        "masehi": "04-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741107600,
+        "masehi": "05-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741194000,
+        "masehi": "06-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741280400,
+        "masehi": "07-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741366800,
+        "masehi": "08-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741453200,
+        "masehi": "09-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741539600,
+        "masehi": "10-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741626000,
+        "masehi": "11-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741712400,
+        "masehi": "12-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741798800,
+        "masehi": "13-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741885200,
+        "masehi": "14-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1741971600,
+        "masehi": "15-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742058000,
+        "masehi": "16-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742144400,
+        "masehi": "17-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742230800,
+        "masehi": "18-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742317200,
+        "masehi": "19-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742403600,
+        "masehi": "20-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742490000,
+        "masehi": "21-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742576400,
+        "masehi": "22-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742662800,
+        "masehi": "23-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742749200,
+        "masehi": "24-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742835600,
+        "masehi": "25-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1742922000,
+        "masehi": "26-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1743008400,
+        "masehi": "27-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1743094800,
+        "masehi": "28-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1743181200,
+        "masehi": "29-March-2025"
+      },
+      {
+        "code": 3,
+        "tanggal": 1743267600,
+        "masehi": "30-March-2025"
+      }
+    ]
+  },
+  {
+    "month": "April",
+    "month_number": 4,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1744416000,
+        "masehi": "12-April-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1744502400,
+        "masehi": "13-April-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1744588800,
+        "masehi": "14-April-2025"
+      }
+    ]
+  },
+  {
+    "month": "Mei",
+    "month_number": 5,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1746921600,
+        "masehi": "11-Mei-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1747008000,
+        "masehi": "12-Mei-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1747094400,
+        "masehi": "13-Mei-2025"
+      }
+    ]
+  },
+  {
+    "month": "Juni",
+    "month_number": 6,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      },
+      {
+        "code": 4
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 4,
+        "tanggal": 1749081600,
+        "masehi": "5-Juni-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1749513600,
+        "masehi": "10-Juni-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1749600000,
+        "masehi": "11-Juni-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1749686400,
+        "masehi": "12-Juni-2025"
+      }
+    ]
+  },
+  {
+    "month": "Juli",
+    "month_number": 7,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      },
+      {
+        "code": 5
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 5,
+        "tanggal": 1751673600,
+        "masehi": "05-Juli-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1751932800,
+        "masehi": "08-Juli-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1752019200,
+        "masehi": "09-Juli-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1752105600,
+        "masehi": "10-Juli-2025"
+      }
+    ]
+  },
+  {
+    "month": "Agustus",
+    "month_number": 8,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1754524800,
+        "masehi": "07-Agustus-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1754611200,
+        "masehi": "08-Agustus-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1754697600,
+        "masehi": "09-Agustus-2025"
+      }
+    ]
+  },
+  {
+    "month": "September",
+    "month_number": 9,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1757116800,
+        "masehi": "06-September-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1757203200,
+        "masehi": "07-September-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1757289600,
+        "masehi": "08-September-2025"
+      }
+    ]
+  },
+  {
+    "month": "Oktober",
+    "month_number": 10,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1759622400,
+        "masehi": "05-Oktober-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1759708800,
+        "masehi": "06-Oktober-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1759795200,
+        "masehi": "07-Oktober-2025"
+      }
+    ]
+  },
+  {
+    "month": "November",
+    "month_number": 11,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1762214400,
+        "masehi": "04-November-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1762300800,
+        "masehi": "05-November-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1762387200,
+        "masehi": "06-November-2025"
+      }
+    ]
+  },
+  {
+    "month": "Desember",
+    "month_number": 12,
+    "puasa_code": [
+      {
+        "code": 1
+      },
+      {
+        "code": 2
+      }
+    ],
+    "tanggal_puasa": [
+      {
+        "code": 2,
+        "tanggal": 1764806400,
+        "masehi": "04-Desember-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1764892800,
+        "masehi": "05-Desember-2025"
+      },
+      {
+        "code": 2,
+        "tanggal": 1764979200,
+        "masehi": "06-Desember-2025"
+      }
+    ]
+  }
+]

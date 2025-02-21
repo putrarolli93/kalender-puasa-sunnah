@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.muslimApp.kalenderpuasasunnah"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 7
         versionName "1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
     implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.11.6'
+//    implementation 'com.google.android.exoplayer:exoplayer:2.11.6'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.0.2'
