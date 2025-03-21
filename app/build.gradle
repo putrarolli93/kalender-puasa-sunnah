@@ -6,22 +6,31 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 34
     buildToolsVersion "29.0.2"
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.muslimApp.kalenderpuasasunnah"
+        applicationId "com.icaali.kalenderpuasasunnah"
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 7
-        versionName "1.4"
+        targetSdkVersion 34
+        versionCode 13
+        versionName "13.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../kalenderPuasa-new.jks")
+            storePassword "5elamanya"
+            keyAlias "key0"
+            keyPassword "5elamanya"
+        }
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -34,7 +43,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-config-ktx:19.2.0'
     implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
-    implementation 'com.google.android.gms:play-services-ads:19.3.0'
+//    implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
 //    implementation 'com.google.android.exoplayer:exoplayer:2.11.6'
 
