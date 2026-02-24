@@ -30,6 +30,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.icaali.kalenderpuasasunnah.databinding.ActivityMainBinding
+import com.icaali.kalenderpuasasunnah.databinding.CalendarDayLayoutBinding
+import com.icaali.kalenderpuasasunnah.databinding.LayoutCalendarLegendHeaderBinding
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -44,10 +47,6 @@ import com.icaali.kalenderpuasasunnah.model.TanggalPuasa
 import com.icaali.kalenderpuasasunnah.utils.AlarmReceiver
 import com.icaali.kalenderpuasasunnah.utils.LegendAdapter
 import com.icaali.kalenderpuasasunnah.utils.getJsonDataFromAsset
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.calendar_day_layout.view.*
-import kotlinx.android.synthetic.main.layout_calendar_legend_header.view.*
-import kotlinx.android.synthetic.main.layout_share.*
 import org.threeten.bp.*
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
@@ -55,7 +54,6 @@ import org.threeten.bp.temporal.WeekFields
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
@@ -85,13 +83,17 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private lateinit var alarmManager: AlarmManager
     private lateinit var pendingIntent: PendingIntent
 
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
 
-        ivLiveMecca.setOnClickListener { goWatchLive("mekah") }
-        ivLiveMadina.setOnClickListener { goWatchLive("madinah") }
+        binding.ivLiveMecca.setOnClickListener { goWatchLive("mekah") }
+        binding.ivLiveMadina.setOnClickListener { goWatchLive("madinah") }
 
 //        MobileAds.initialize(this)
 //        val adRequest = AdRequest.Builder().build()
@@ -120,7 +122,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 //        mInterstitialAd?.loadAd(adRequest)
 
 //        checkForUpdate()
-        scMain.isNestedScrollingEnabled = false
+        binding.scMain.isNestedScrollingEnabled = false
         val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2025.json")
         val gson = Gson()
         val tanggalType = object : TypeToken<List<TanggalModel>>() {}.type
@@ -129,7 +131,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         this.tanggalJson = tanggal
         this.setUpList()
         this.setUpCalendar()
-        btnShare.setOnClickListener {
+        binding.iShare.btnShare.setOnClickListener {
             shareApp()
         }
 //        stopAlarmManager()
@@ -272,10 +274,10 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     }
 
     private fun setUpList() {
-        rvLegendLayout.layoutManager = LinearLayoutManager(this)
+        binding.rvLegendLayout.layoutManager = LinearLayoutManager(this)
         adapter = LegendAdapter(this)
-        rvLegendLayout.adapter = adapter
-        rvLegendLayout.isNestedScrollingEnabled = false
+        binding.rvLegendLayout.adapter = adapter
+        binding.rvLegendLayout.isNestedScrollingEnabled = false
     }
 
     private fun setUpCalendar() {
@@ -284,18 +286,20 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         val firstMonth = currentMonth.minusMonths(10)
         val lastMonth = currentMonth.plusMonths(10)
         val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
-        calendarView.setup(firstMonth, lastMonth, daysOfWeek.first())
-        calendarView.scrollToMonth(currentMonth)
+        binding.calendarView.setup(firstMonth, lastMonth, daysOfWeek.first())
+        binding.calendarView.scrollToMonth(currentMonth)
         onSetHeaderBinder()
         onMonthScrollListener()
 
         class DayViewContainer(view: View) : ViewContainer(view) {
-            val textView = view.calendarDayText
-            val textArabicNumber = view.calendarArabicText
-            val marker = view.dotMarker
+            private val binding = CalendarDayLayoutBinding.bind(view)
+
+            val textView = binding.calendarDayText
+            val textArabicNumber = binding.calendarArabicText
+            val marker = binding.dotMarker
         }
 
-        calendarView.dayBinder = object : DayBinder<DayViewContainer> {
+        binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
             // Called only when a new container is needed.
             override fun create(view: View) = DayViewContainer(view)
 
@@ -530,17 +534,18 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     private fun onSetHeaderBinder() {
         class MonthViewContainer(view: View) : ViewContainer(view) {
-            val legendLayout = view.legendLayout
+            val binding = LayoutCalendarLegendHeaderBinding.bind(view)
         }
-        calendarView.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
+        binding.calendarView.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
             override fun create(view: View) = MonthViewContainer(view)
 
             @RequiresApi(Build.VERSION_CODES.M)
             override fun bind(container: MonthViewContainer, month: CalendarMonth) {
+                val legendLayout = container.binding.legendLayout
                 // Setup each header day text if we have not done that already.
-                if (container.legendLayout.tag == null) {
-                    container.legendLayout.tag = month.yearMonth
-                    container.legendLayout.children.map { it as TextView }
+                if (legendLayout.tag == null) {
+                    legendLayout.tag = month.yearMonth
+                    legendLayout.children.map { it as TextView }
                         .forEachIndexed { index, tv ->
                             tv.text = daysOfWeek[index].getDisplayName(
                                 TextStyle.SHORT,
@@ -574,14 +579,14 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                 this.puasaEvent.add(it)
             }
         }
-        calendarView.monthScrollListener = { month ->
+        binding.calendarView.monthScrollListener = { month ->
             val title = "${monthTitleFormatter.format(month.yearMonth)} ${month.yearMonth.year}"
-            exMonthYearText.text = title
+            binding.exMonthYearText.text = title
             this.monthSelected = month.month
             this.yearSelectDate = month.yearMonth.year
             var startDateHijriah = convertHijriah(getFirstdateOfTheMonth(month.month))
             var lastDateHijriah = convertHijriah(getLastdateOfTheMonth(month.month))
-            tvMonthHijri.text = startDateHijriah + " - " + lastDateHijriah
+            binding.tvMonthHijri.text = startDateHijriah + " - " + lastDateHijriah
             tanggalJson?.let {
                 adapter.updateMonthLegend(it[month.month - 1])
             }
@@ -589,15 +594,15 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         }
 
 
-        exNextMonthImage.setOnClickListener {
-            calendarView.findFirstVisibleMonth()?.let {
-                calendarView.scrollToMonth(it.yearMonth.next)
+        binding.exNextMonthImage.setOnClickListener {
+            binding.calendarView.findFirstVisibleMonth()?.let {
+                binding.calendarView.scrollToMonth(it.yearMonth.next)
             }
         }
 
-        exPreviousMonthImage.setOnClickListener {
-            calendarView.findFirstVisibleMonth()?.let {
-                calendarView.scrollToMonth(it.yearMonth.previous)
+        binding.exPreviousMonthImage.setOnClickListener {
+            binding.calendarView.findFirstVisibleMonth()?.let {
+                binding.calendarView.scrollToMonth(it.yearMonth.previous)
             }
         }
     }

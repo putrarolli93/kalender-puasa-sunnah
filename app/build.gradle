@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    namespace = "com.icaali.kalenderpuasasunnah"
     compileSdkVersion 34
-    buildToolsVersion "29.0.2"
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_17
     }
     defaultConfig {
         applicationId "com.icaali.kalenderpuasasunnah"
@@ -26,6 +26,10 @@ android {
             keyAlias "key0"
             keyPassword "5elamanya"
         }
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
     }
 
     buildTypes {
@@ -46,6 +50,7 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
 //    implementation 'com.google.android.exoplayer:exoplayer:2.11.6'
+//    implementation 'com.android.billingclient:billing-ktx:7.1.1'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.0.2'
