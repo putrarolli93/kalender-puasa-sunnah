@@ -49,11 +49,19 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM", Locale("id", "ID"))
     private fun Long.startDateMillis(): Long = this * DateUtils.SECOND_IN_MILLIS
     private val puasaEvent: MutableList<TanggalPuasa> = mutableListOf()
+
+    // FIX 3: HashMap untuk lookup O(1) di dayBinder
+    private val puasaEventMap: HashMap<Long, TanggalPuasa> = HashMap()
+
+    // FIX 2: Cache hasil konversi Arabic number agar tidak re-create object tiap render cell
+    private val arabicNumberCache = HashMap<LocalDate, String>()
+
     private var selectedDate: LocalDate? = null
     private var tanggalJson: List<TanggalModel>? = null
     private var monthSelected: Int = 0
     private var yearSelectDate = 0
     lateinit var adapter: LegendAdapter
+    val nowYear = LocalDate.now().year
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -64,11 +72,21 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
         binding.scMain.isNestedScrollingEnabled = false
-        val nowYear = LocalDate.now().year
         this.tanggalJson = generateMultiYear(
             nowYear - 1,
             nowYear + 1
         )
+
+        // FIX 1: Populate puasaEvent & puasaEventMap SEKALI di sini,
+        // bukan di dalam monthScrollListener yang dipanggil tiap scroll bulan
+        this.tanggalJson?.forEach { tanggal ->
+            tanggal.tanggal_puasa.forEach { puasa ->
+                this.puasaEvent.add(puasa)
+                val key = convertDateGMT(puasa.tanggal)
+                puasaEventMap[key] = puasa
+            }
+        }
+
         this.setUpList()
         this.setUpCalendar()
         binding.iShare.btnShare.setOnClickListener {
@@ -79,11 +97,9 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     @RequiresApi(Build.VERSION_CODES.O)
     fun generateMultiYear(startYear: Int, endYear: Int): List<TanggalModel> {
         val result = mutableListOf<TanggalModel>()
-
         for (year in startYear..endYear) {
             result.addAll(generateTanggalModel(year)!!)
         }
-
         return result
     }
 
@@ -109,8 +125,8 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private fun setUpCalendar() {
 
         val currentMonth = YearMonth.now()
-        val firstMonth = currentMonth.minusMonths(10)
-        val lastMonth = currentMonth.plusMonths(10)
+        val firstMonth = YearMonth.of(nowYear - 1, 1)   // Januari tahun lalu
+        val lastMonth = YearMonth.of(nowYear + 1, 12)    // Desember tahun depan
         val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
         binding.calendarView.setup(firstMonth, lastMonth, daysOfWeek.first())
         binding.calendarView.scrollToMonth(currentMonth)
@@ -126,13 +142,12 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         }
 
         binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
-            // Called only when a new container is needed.
             override fun create(view: View) = DayViewContainer(view)
 
-            // Called every time we need to reuse a container.
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.textView.text = day.date.dayOfMonth.toString()
-                container.textArabicNumber.text = convertToArabicNumber(day.date)
+                // FIX 2: Gunakan cached version
+                container.textArabicNumber.text = convertToArabicNumberCached(day.date)
                 val textView = container.textView
                 val textArabicNumber = container.textArabicNumber
 
@@ -199,9 +214,10 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                         container.marker.visibility = View.INVISIBLE
                     }
 
-                    val isEvent = puasaEvent.find {
-                        convertLocalTimeToLong(day.date.toString()) == convertDateGMT(it.tanggal)
-                    }
+                    // FIX 3: Lookup O(1) pakai HashMap, bukan linear search find{}
+                    val key = convertLocalTimeToLong(day.date.toString())
+                    val isEvent = puasaEventMap[key]
+
                     when (isEvent?.code) {
                         2 -> {
                             textView.background = getDrawable(R.drawable.bg_ayamul_bidh)
@@ -314,7 +330,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                                     )
                                 )
                                 container.marker.visibility = View.INVISIBLE
-
                             } else {
                                 container.marker.visibility = View.INVISIBLE
                             }
@@ -331,7 +346,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                     textArabicNumber.visibility = View.INVISIBLE
                     container.marker.visibility = View.INVISIBLE
                 }
-
             }
         }
     }
@@ -346,7 +360,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
             @RequiresApi(Build.VERSION_CODES.M)
             override fun bind(container: MonthViewContainer, month: CalendarMonth) {
                 val legendLayout = container.binding.legendLayout
-                // Setup each header day text if we have not done that already.
                 if (legendLayout.tag == null) {
                     legendLayout.tag = month.yearMonth
                     legendLayout.children.map { it as TextView }
@@ -368,7 +381,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private fun daysOfWeekFromLocale(): Array<DayOfWeek> {
         val firstDayOfWeek = DayOfWeek.MONDAY
         var daysOfWeek = DayOfWeek.values()
-        // Order `daysOfWeek` array so that firstDayOfWeek is at index 0.
         if (firstDayOfWeek != DayOfWeek.MONDAY) {
             val rhs = daysOfWeek.sliceArray(firstDayOfWeek.ordinal..daysOfWeek.indices.last)
             val lhs = daysOfWeek.sliceArray(0 until firstDayOfWeek.ordinal)
@@ -378,25 +390,29 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     }
 
     private fun onMonthScrollListener() {
-        this.tanggalJson?.forEach {
-            it.tanggal_puasa.forEach {
-                this.puasaEvent.add(it)
-            }
-        }
+        // FIX 1: Loop populate puasaEvent DIHAPUS dari sini
+        // Sudah dipindah ke onCreate agar hanya dijalankan sekali
+
         binding.calendarView.monthScrollListener = { month ->
             val title = "${monthTitleFormatter.format(month.yearMonth)} ${month.yearMonth.year}"
             binding.exMonthYearText.text = title
             this.monthSelected = month.month
             this.yearSelectDate = month.yearMonth.year
-            var startDateHijriah = convertHijriah(getFirstdateOfTheMonth(month.month))
-            var lastDateHijriah = convertHijriah(getLastdateOfTheMonth(month.month))
-            binding.tvMonthHijri.text = startDateHijriah + " - " + lastDateHijriah
-            tanggalJson?.let {
-                adapter.updateMonthLegend(it[month.month - 1])
-            }
-//            calendarView.notifyMonthChanged(month.yearMonth)
-        }
+            val startDateHijriah = convertHijriah(getFirstdateOfTheMonth(month.month))
+            val lastDateHijriah = convertHijriah(getLastdateOfTheMonth(month.month))
+            binding.tvMonthHijri.text = "$startDateHijriah - $lastDateHijriah"
+            // Tambah property di class
+            val nowYear = LocalDate.now().year
 
+            // Di monthScrollListener:
+            tanggalJson?.let { list ->
+                val yearOffset = (month.yearMonth.year - (nowYear - 1)) * 12
+                val index = yearOffset + (month.month - 1)
+                if (index in list.indices) {
+                    adapter.updateMonthLegend(list[index])
+                }
+            }
+        }
 
         binding.exNextMonthImage.setOnClickListener {
             binding.calendarView.findFirstVisibleMonth()?.let {
@@ -412,7 +428,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     }
 
     private fun convertDateGMT(date: Long): Long {
-        var newDate = Calendar.getInstance()
+        val newDate = Calendar.getInstance()
         newDate.timeInMillis = date.startDateMillis()
         return newDate.convertCalendarFormatGMT7().timeInMillis.millisToSeconds()
     }
@@ -459,18 +475,25 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return l.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
     }
 
+    // FIX 2: Wrapper cached — cukup hit cache untuk tanggal yang sudah pernah di-render
+    fun convertToArabicNumberCached(date: LocalDate): String {
+        return arabicNumberCache.getOrPut(date) {
+            convertToArabicNumber(date)
+        }
+    }
+
     fun convertToArabicNumber(date: LocalDate): String {
         val gregorianCalendar = GregorianCalendar(date.year, date.monthValue - 1, date.dayOfMonth)
         val cal = UmmalquraCalendar()
         val dateFormat = SimpleDateFormat("", Locale.ENGLISH)
 
         cal.time = gregorianCalendar.time
-        cal.get(Calendar.YEAR)        // 1436
-        cal.get(Calendar.MONTH)        // 5 <=> Jumada al-Akhirah
-        cal.get(Calendar.DAY_OF_MONTH) // 14
+        cal.get(Calendar.YEAR)
+        cal.get(Calendar.MONTH)
+        cal.get(Calendar.DAY_OF_MONTH)
         dateFormat.calendar = cal
-        dateFormat.applyPattern("d MMMM, y");
-        dateFormat.format(cal.time);
+        dateFormat.applyPattern("d MMMM, y")
+        dateFormat.format(cal.time)
         val nf: NumberFormat = NumberFormat.getInstance(Locale("ar", "EG"))
 
         return nf.format(cal.get(Calendar.DAY_OF_MONTH))
@@ -486,9 +509,9 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         val dateFormat = SimpleDateFormat("", Locale.ENGLISH)
 
         cal.time = gregorianCalendar.time
-        cal.get(Calendar.YEAR)        // 1436
-        cal.get(Calendar.MONTH)        // 5 <=> Jumada al-Akhirah
-        cal.get(Calendar.DAY_OF_MONTH) // 14
+        cal.get(Calendar.YEAR)
+        cal.get(Calendar.MONTH)
+        cal.get(Calendar.DAY_OF_MONTH)
         dateFormat.calendar = cal
         dateFormat.applyPattern("d MMMM, y")
         dateFormat.format(cal.time)
@@ -564,7 +587,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         intent.putExtra("code", code)
         startActivity(intent)
     }
-
 }
 
 

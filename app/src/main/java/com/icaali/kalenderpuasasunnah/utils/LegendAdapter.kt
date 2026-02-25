@@ -79,8 +79,8 @@ class LegendAdapter(
                     5 -> {
                         vcolorLegend.background =
                             AppCompatResources.getDrawable(root.context, R.drawable.bg_asyura)
-                        tvTitle.text = "Puasa Asyura"
-                        tvDesc.text = "Puasa Sunnah 1 Muharram & 1 hari sebelum/sesudah"
+                        tvTitle.text = "Puasa Tasu'a & Asyura"
+                        tvDesc.text = "Puasa Sunnah 10 Muharram & 1 hari sebelum/sesudah"
                     }
 
                     8 -> {
