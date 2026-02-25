@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.icaali.kalenderpuasasunnah.R
+import com.icaali.kalenderpuasasunnah.TanggalModel
 import com.icaali.kalenderpuasasunnah.databinding.LayoutItemLegendBinding
-import com.icaali.kalenderpuasasunnah.model.TanggalModel
 
 class LegendAdapter(
     private val listener: OnLegendedListener
@@ -24,12 +24,12 @@ class LegendAdapter(
     }
 
     override fun getItemCount(): Int {
-        return tanggalModel?.puasaCode?.count() ?: 0
+        return tanggalModel?.puasa_code?.count() ?: 0
     }
 
     override fun onBindViewHolder(holder: LegendHolder, position: Int) {
         tanggalModel?.let {
-            holder.bind(it.puasaCode[position].code, listener)
+            holder.bind(it.puasa_code[position].code, listener)
         }
     }
 

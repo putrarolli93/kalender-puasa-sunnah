@@ -11,25 +11,16 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.text.TextUtils
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar
-import com.google.android.gms.ads.*
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.icaali.kalenderpuasasunnah.databinding.ActivityMainBinding
 import com.icaali.kalenderpuasasunnah.databinding.CalendarDayLayoutBinding
 import com.icaali.kalenderpuasasunnah.databinding.LayoutCalendarLegendHeaderBinding
@@ -42,11 +33,7 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
 import com.icaali.kalenderpuasasunnah.detail.DetailPuasaActivity
-import com.icaali.kalenderpuasasunnah.model.TanggalModel
-import com.icaali.kalenderpuasasunnah.model.TanggalPuasa
-import com.icaali.kalenderpuasasunnah.utils.AlarmReceiver
 import com.icaali.kalenderpuasasunnah.utils.LegendAdapter
-import com.icaali.kalenderpuasasunnah.utils.getJsonDataFromAsset
 import org.threeten.bp.*
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
@@ -64,176 +51,40 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private val puasaEvent: MutableList<TanggalPuasa> = mutableListOf()
     private var selectedDate: LocalDate? = null
     private var tanggalJson: List<TanggalModel>? = null
-    private var monthList: MutableList<Int> = mutableListOf()
-    private var alarmID: MutableList<Int> = mutableListOf(100, 101)
     private var monthSelected: Int = 0
     private var yearSelectDate = 0
     lateinit var adapter: LegendAdapter
-//    private lateinit var mInterstitialAd: InterstitialAd
-
-
-    //    private var pendingIntent: PendingIntent? = null
-    private val ALARM_REQUEST_CODE = 134
-
-    //set interval notifikasi 10 detik
-    private val interval_seconds = 10
-    private val NOTIFICATION_ID = 1
-
-    private val REQUEST_CODE = 100
-    private lateinit var alarmManager: AlarmManager
-    private lateinit var pendingIntent: PendingIntent
-
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
-
-        binding.ivLiveMecca.setOnClickListener { goWatchLive("mekah") }
-        binding.ivLiveMadina.setOnClickListener { goWatchLive("madinah") }
-
-//        MobileAds.initialize(this)
-//        val adRequest = AdRequest.Builder().build()
-//        adView.loadAd(adRequest)
-//        adView.adListener = object : AdListener() {
-//            override fun onAdLoaded() {
-//                adView.visibility = View.VISIBLE
-//            }
-//
-//            override fun onAdFailedToLoad(adError: LoadAdError) {
-//                adView.visibility = View.GONE
-//            }
-//
-//            override fun onAdOpened() {
-//            }
-//
-//            override fun onAdClicked() {
-//            }
-//
-//            override fun onAdClosed() {
-//            }
-//        }
-//
-//        mInterstitialAd = InterstitialAd(this)
-//        mInterstitialAd?.adUnitId = "ca-app-pub-3844487552229866/7298641917"
-//        mInterstitialAd?.loadAd(adRequest)
-
-//        checkForUpdate()
         binding.scMain.isNestedScrollingEnabled = false
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "puasa_2025.json")
-        val gson = Gson()
-        val tanggalType = object : TypeToken<List<TanggalModel>>() {}.type
-
-        var tanggal: List<TanggalModel> = gson.fromJson(jsonFileString, tanggalType)
-        this.tanggalJson = tanggal
+        val nowYear = LocalDate.now().year
+        this.tanggalJson = generateMultiYear(
+            nowYear - 1,
+            nowYear + 1
+        )
         this.setUpList()
         this.setUpCalendar()
         binding.iShare.btnShare.setOnClickListener {
             shareApp()
         }
-//        stopAlarmManager()
-//        runAlarm()
-//        showDialogTimePrayerReminder()
-//        alarmID.forEach {
-//            alarmCihuy(it)
-//        }
     }
 
-    private fun goWatchLive(param: String) {
-//        val intent = Intent(this, LiveActivity::class.java)
-//        intent.putExtra("param", param)
-//        startActivity(intent)
-    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun generateMultiYear(startYear: Int, endYear: Int): List<TanggalModel> {
+        val result = mutableListOf<TanggalModel>()
 
-    private fun showDialogTimePrayerReminder() {
-        val view = layoutInflater.inflate(R.layout.layout_time_prayer_reminder, null)
-        val dialog = BottomSheetDialog(this)
-        dialog.setContentView(view)
-        dialog.show()
-    }
-
-    private fun alarmCihuy(id: Int) {
-        // Quote in Morning at 08:32:00 AM
-        val calendar = Calendar.getInstance()
-        calendar.timeZone = TimeZone.getTimeZone("GMT+07:00")
-        when (id) {
-            100 -> {
-                calendar.set(Calendar.HOUR_OF_DAY, 9)
-                calendar.set(Calendar.MINUTE, 0)
-                calendar.set(Calendar.SECOND, 0)
-                calendar.set(Calendar.MILLISECOND, 0)
-            }
-            101 -> {
-                calendar.set(Calendar.HOUR_OF_DAY, 21)
-                calendar.set(Calendar.MINUTE, 0)
-                calendar.set(Calendar.SECOND, 0)
-                calendar.set(Calendar.MILLISECOND, 0)
-            }
+        for (year in startYear..endYear) {
+            result.addAll(generateTanggalModel(year)!!)
         }
 
-        val cur = Calendar.getInstance()
-
-        if (cur.after(calendar)) {
-            calendar.add(Calendar.DATE, 1)
-        }
-
-        val myIntent = Intent(this, AlarmReceiver::class.java)
-//        val ALARM1_ID = 10000
-        myIntent.putExtra("id", id.toString())
-        val pendingIntent = PendingIntent.getBroadcast(
-            this, id, myIntent, PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        val alarmManager =
-            this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntent
-        )
-    }
-
-    private fun runAlarm() {
-        val alarmIntent = Intent(this@MainActivity, AlarmReceiver::class.java)
-        pendingIntent =
-            PendingIntent.getBroadcast(this@MainActivity, ALARM_REQUEST_CODE, alarmIntent,
-                PendingIntent.FLAG_IMMUTABLE)
-
-        //set waktu sekarang berdasarkan interval
-        //set waktu sekarang berdasarkan interval
-
-        val calendar = Calendar.getInstance()
-        calendar.timeZone = TimeZone.getTimeZone("GMT+07:00")
-        calendar.set(Calendar.HOUR_OF_DAY, 11)
-        calendar.set(Calendar.MINUTE, 2)
-        calendar.set(Calendar.SECOND, 0)
-        calendar.set(Calendar.MILLISECOND, 0)
-        val manager =
-            getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        //set alarm manager dengan memasukkan waktu yang telah dikonversi menjadi milliseconds
-        //set alarm manager dengan memasukkan waktu yang telah dikonversi menjadi milliseconds
-        manager[AlarmManager.RTC_WAKEUP, calendar.timeInMillis] = pendingIntent
-        Toast.makeText(this, "AlarmManager Start.", Toast.LENGTH_SHORT).show()
-    }
-
-    //Stop/Cancel alarm manager
-    fun stopAlarmManager() {
-        val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val alarmIntent = Intent(this@MainActivity, AlarmReceiver::class.java)
-        pendingIntent =
-            PendingIntent.getBroadcast(this@MainActivity, ALARM_REQUEST_CODE, alarmIntent,
-                PendingIntent.FLAG_IMMUTABLE)
-        manager.cancel(pendingIntent)
-        //close existing/current notifications
-        val notificationManager: NotificationManager =
-            applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.cancel(NOTIFICATION_ID)
-        //jika app ini mempunyai banyak notifikasi bisa di cancelAll()
-        //notificationManager.cancelAll();
-        Toast.makeText(this, "AlarmManager Stopped by User.", Toast.LENGTH_SHORT).show()
+        return result
     }
 
     private fun shareApp() {
@@ -246,31 +97,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
             "${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}".trimIndent() + "\n" + " Terima kasih"
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
         startActivity(Intent.createChooser(shareIntent, "choose one"))
-    }
-
-    private fun setAlarm() {
-        val calendar = Calendar.getInstance()
-        calendar.timeZone = TimeZone.getTimeZone("GMT+07:00")
-        calendar.set(Calendar.HOUR_OF_DAY, 8)
-        calendar.set(Calendar.MINUTE, 20)
-        calendar.set(Calendar.SECOND, 0)
-        calendar.set(Calendar.MILLISECOND, 0)
-
-        val intent1 = Intent(this@MainActivity, AlarmReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(
-            this@MainActivity,
-            0,
-            intent1,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        val am =
-            this@MainActivity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        am.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntent
-        )
     }
 
     private fun setUpList() {
@@ -499,18 +325,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                         val s = day.date.dayOfMonth.toString()
                         container.textView.text = Html.fromHtml("<u>$s</u>")
                         container.marker.visibility = View.VISIBLE
-//                        textView.setTextColor(
-//                            ContextCompat.getColor(
-//                                this@MainActivity,
-//                                R.color.colorBlackImage
-//                            )
-//                        )
-//                        textArabicNumber.setTextColor(
-//                            ContextCompat.getColor(
-//                                this@MainActivity,
-//                                R.color.colorBlackImage
-//                            )
-//                        )
                     }
                 } else {
                     textView.visibility = View.INVISIBLE
@@ -520,16 +334,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
             }
         }
-
-//        calendarView.post {
-//            puasaSyawal.forEach {
-//                val date: LocalDate = Instant.ofEpochMilli(it).atZone(ZoneId.systemDefault()).toLocalDate()
-//                selectedDate = date
-//                selectedDate?.let { selected ->
-//                    calendarView.notifyCalendarChanged()
-//                }
-//            }
-//        }
     }
 
     private fun onSetHeaderBinder() {
@@ -575,7 +379,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     private fun onMonthScrollListener() {
         this.tanggalJson?.forEach {
-            it.tanggalPuasa.forEach {
+            it.tanggal_puasa.forEach {
                 this.puasaEvent.add(it)
             }
         }
@@ -629,18 +433,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     private fun Long.millisToSeconds(): Long {
         return this / 1000L
-    }
-
-    private fun convertDateUTC(date: Long): Long {
-        var newDate = Calendar.getInstance()
-        newDate.timeInMillis = date.startDateMillis()
-        return newDate.convertCalendarFormatUTC().timeInMillis.millisToSeconds()
-    }
-
-    private fun getDateByTimestampUTC(orderDate: Long): String {
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = orderDate * DateUtils.SECOND_IN_MILLIS
-        return getDateByCalendar(calendar.convertCalendarFormatUTC())
     }
 
     private fun getDateByCalendar(calendar: Calendar): String {
@@ -703,14 +495,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return dateFormat.format(cal.time)
     }
 
-    fun convertToLocalDate(number: Long): LocalDate {
-        val date =
-            Instant.ofEpochMilli(number)
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate()
-        return date
-    }
-
     private fun getFirstdateOfTheMonth(month: Int = 0): Calendar {
         val calendar = Calendar.getInstance()
         calendar.timeZone = TimeZone.getTimeZone("UTC")
@@ -743,95 +527,8 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return calendar.convertCalendarFormatUTC()
     }
 
-    private fun checkForUpdate() {
-
-        val appVersion: String = getAppVersion(this)
-        val remoteConfig = FirebaseRemoteConfig.getInstance()
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds(if (BuildConfig.DEBUG) 0 else 3600)
-            .build()
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.fetch(0)
-
-        val minVersion =
-            remoteConfig.getString("min_version_of_app")
-        val currentVersion =
-            remoteConfig.getString("latest_version_of_app")
-        if (!TextUtils.isEmpty(minVersion) && !TextUtils.isEmpty(appVersion) && checkMandateVersionApplicable(
-                getAppVersionWithoutAlphaNumeric(minVersion),
-                getAppVersionWithoutAlphaNumeric(appVersion)
-            )
-        ) {
-            onUpdateNeeded(true)
-        }
-//        else if (!TextUtils.isEmpty(currentVersion) && !TextUtils.isEmpty(appVersion) && !TextUtils.equals(
-//                currentVersion,
-//                appVersion
-//            )
-//        ) {
-//            onUpdateNeeded(false)
-//        }
-        else {
-            moveForward()
-        }
-    }
-
     override fun onResume() {
         super.onResume()
-//        checkForUpdate()
-    }
-
-    private fun checkMandateVersionApplicable(
-        minVersion: String,
-        appVersion: String
-    ): Boolean {
-        return try {
-            val minVersionInt = minVersion.toInt()
-            val appVersionInt = appVersion.toInt()
-            appVersionInt < minVersionInt
-        } catch (exp: NumberFormatException) {
-            false
-        }
-    }
-
-    private fun getAppVersion(context: Context): String {
-        var result: String? = ""
-        try {
-            result = context.packageManager
-                .getPackageInfo(context.packageName, 0).versionName
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.message?.let { Log.e("TAG", it) }
-        }
-        return result ?: ""
-    }
-
-    private fun getAppVersionWithoutAlphaNumeric(result: String): String {
-        var version_str = ""
-        version_str = result.replace(".", "")
-        return version_str
-    }
-
-    private fun onUpdateNeeded(isMandatoryUpdate: Boolean) {
-        val dialogBuilder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-            .setTitle(getString(R.string.update_app))
-            .setCancelable(false)
-            .setMessage(if (isMandatoryUpdate) getString(R.string.dialog_update_available_message) else "A new version is found on Play store, please update for better usage.")
-            .setPositiveButton(getString(R.string.update_now))
-            { dialog, which ->
-                openAppOnPlayStore(this, null)
-            }
-
-        dialogBuilder.setNegativeButton("EXIT") { dialog, which ->
-//            moveForward()
-//            dialog?.dismiss()
-            finishAffinity()
-        }.create()
-        val dialog: AlertDialog = dialogBuilder.create()
-        dialog.show()
-    }
-
-    private fun moveForward() {
-//        Toast.makeText(this, "Next Page Intent", Toast.LENGTH_SHORT).show()
     }
 
     private fun openAppOnPlayStore(ctx: Context, package_name: String?) {
@@ -860,42 +557,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     override fun onLegendClick(code: Int) {
         gotoDetail(code)
-
-//        if (mInterstitialAd.isLoaded) {
-//            mInterstitialAd?.show()
-//        } else {
-//            Log.d("TAG", "The interstitial wasn't loaded yet.")
-//            gotoDetail(code)
-//        }
-//
-//        mInterstitialAd.adListener = object : AdListener() {
-//            override fun onAdLoaded() {
-//                // Code to be executed when an ad finishes loading.
-//            }
-//
-//            override fun onAdFailedToLoad(adError: LoadAdError) {
-//                // Code to be executed when an ad request fails.
-//            }
-//
-//            override fun onAdOpened() {
-//                // Code to be executed when the ad is displayed.
-//            }
-//
-//            override fun onAdClicked() {
-//                // Code to be executed when the user clicks on an ad.
-//            }
-//
-//            override fun onAdLeftApplication() {
-//                // Code to be executed when the user has left the app.
-//            }
-//
-//            override fun onAdClosed() {
-//                // Code to be executed when the interstitial ad is closed.
-//                mInterstitialAd.loadAd(AdRequest.Builder().build())
-//                gotoDetail(code)
-//            }
-//        }
-
     }
 
     private fun gotoDetail(code: Int) {

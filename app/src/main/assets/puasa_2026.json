@@ -1,0 +1,165 @@
+[
+  {
+    "month": "Januari",
+    "month_number": 1,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1704211200, "masehi": "02-Januari-2026" },
+      { "code": 2, "tanggal": 1704297600, "masehi": "03-Januari-2026" },
+      { "code": 2, "tanggal": 1704384000, "masehi": "04-Januari-2026" }
+    ]
+  },
+  {
+    "month": "Februari",
+    "month_number": 2,
+    "puasa_code": [
+      { "code": 3 }
+    ],
+    "tanggal_puasa": [
+      { "code": 3, "tanggal": 1771459200, "masehi": "19-Februari-2026" },
+      { "code": 3, "tanggal": 1771545600, "masehi": "20-Februari-2026" },
+      { "code": 3, "tanggal": 1771632000, "masehi": "21-Februari-2026" },
+      { "code": 3, "tanggal": 1771718400, "masehi": "22-Februari-2026" },
+      { "code": 3, "tanggal": 1771804800, "masehi": "23-Februari-2026" },
+      { "code": 3, "tanggal": 1771891200, "masehi": "24-Februari-2026" },
+      { "code": 3, "tanggal": 1771977600, "masehi": "25-Februari-2026" },
+      { "code": 3, "tanggal": 1772064000, "masehi": "26-Februari-2026" },
+      { "code": 3, "tanggal": 1772150400, "masehi": "27-Februari-2026" },
+      { "code": 3, "tanggal": 1772236800, "masehi": "28-Februari-2026" }
+    ]
+  },
+  {
+    "month": "Maret",
+    "month_number": 3,
+    "puasa_code": [
+      { "code": 3 }
+    ],
+    "tanggal_puasa": [
+      { "code": 3, "tanggal": 1708454400, "masehi": "21-Maret-2026" },
+      { "code": 3, "tanggal": 1708540800, "masehi": "22-Maret-2026" }
+    ]
+  },
+  {
+    "month": "April",
+    "month_number": 4,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1712112000, "masehi": "02-April-2026" },
+      { "code": 2, "tanggal": 1712198400, "masehi": "03-April-2026" },
+      { "code": 2, "tanggal": 1712284800, "masehi": "04-April-2026" }
+    ]
+  },
+  {
+    "month": "Mei",
+    "month_number": 5,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1714704000, "masehi": "01-Mei-2026" },
+      { "code": 2, "tanggal": 1714790400, "masehi": "02-Mei-2026" },
+      { "code": 2, "tanggal": 1714876800, "masehi": "03-Mei-2026" }
+    ]
+  },
+  {
+    "month": "Juni",
+    "month_number": 6,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 },
+      { "code": 4 },
+      { "code": 5 }
+    ],
+    "tanggal_puasa": [
+      { "code": 4, "tanggal": 1764105600, "masehi": "26-Mei-2026" },
+      { "code": 2, "tanggal": 1717401600, "masehi": "31-Mei-2026" },
+      { "code": 2, "tanggal": 1717488000, "masehi": "01-Juni-2026" },
+      { "code": 5, "tanggal": 1719753600, "masehi": "25-Juni-2026" }
+    ]
+  },
+  {
+    "month": "Juli",
+    "month_number": 7,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1722316800, "masehi": "28-Juni-2026" },
+      { "code": 2, "tanggal": 1722403200, "masehi": "29-Juni-2026" },
+      { "code": 2, "tanggal": 1722489600, "masehi": "30-Juni-2026" }
+    ]
+  },
+  {
+    "month": "Agustus",
+    "month_number": 8,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1725091200, "masehi": "28-Juli-2026" },
+      { "code": 2, "tanggal": 1725177600, "masehi": "29-Juli-2026" },
+      { "code": 2, "tanggal": 1725264000, "masehi": "30-Juli-2026" }
+    ]
+  },
+  {
+    "month": "September",
+    "month_number": 9,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1727740800, "masehi": "24-September-2026" },
+      { "code": 2, "tanggal": 1727827200, "masehi": "25-September-2026" },
+      { "code": 2, "tanggal": 1727913600, "masehi": "26-September-2026" }
+    ]
+  },
+  {
+    "month": "Oktober",
+    "month_number": 10,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1730486400, "masehi": "24-Oktober-2026" },
+      { "code": 2, "tanggal": 1730572800, "masehi": "25-Oktober-2026" },
+      { "code": 2, "tanggal": 1730659200, "masehi": "26-Oktober-2026" }
+    ]
+  },
+  {
+    "month": "November",
+    "month_number": 11,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1733308800, "masehi": "24-November-2026" },
+      { "code": 2, "tanggal": 1733395200, "masehi": "25-November-2026" },
+      { "code": 2, "tanggal": 1733481600, "masehi": "26-November-2026" }
+    ]
+  },
+  {
+    "month": "Desember",
+    "month_number": 12,
+    "puasa_code": [
+      { "code": 1 },
+      { "code": 2 }
+    ],
+    "tanggal_puasa": [
+      { "code": 2, "tanggal": 1736198400, "masehi": "22-Desember-2026" },
+      { "code": 2, "tanggal": 1736284800, "masehi": "23-Desember-2026" },
+      { "code": 2, "tanggal": 1736371200, "masehi": "24-Desember-2026" }
+    ]
+  }
+]
