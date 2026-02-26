@@ -1,11 +1,7 @@
 package com.icaali.kalenderpuasasunnah
 
-import android.app.AlarmManager
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
@@ -21,6 +17,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.icaali.kalenderpuasasunnah.databinding.ActivityMainBinding
 import com.icaali.kalenderpuasasunnah.databinding.CalendarDayLayoutBinding
 import com.icaali.kalenderpuasasunnah.databinding.LayoutCalendarLegendHeaderBinding
@@ -92,6 +90,14 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         binding.iShare.btnShare.setOnClickListener {
             shareApp()
         }
+        initBannerAds()
+    }
+
+    private fun initBannerAds() {
+        MobileAds.initialize(this)
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -451,11 +457,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         return this / 1000L
     }
 
-    private fun getDateByCalendar(calendar: Calendar): String {
-        val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        return simpleDateFormat.format(calendar.time)
-    }
-
     private fun Calendar.convertCalendarFormatUTC(): Calendar {
         val calendar = Calendar.getInstance()
         calendar.timeZone = TimeZone.getTimeZone("UTC")
@@ -552,15 +553,6 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     override fun onResume() {
         super.onResume()
-    }
-
-    private fun openAppOnPlayStore(ctx: Context, package_name: String?) {
-        var package_name = package_name
-        if (package_name == null) {
-            package_name = ctx.packageName
-        }
-        val uri = Uri.parse("market://details?id=$package_name")
-        openURI(ctx, uri, "Play Store not found in your device")
     }
 
     private fun openURI(

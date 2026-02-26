@@ -45,8 +45,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'com.google.firebase:firebase-config-ktx:19.2.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+//    implementation 'com.google.firebase:firebase-config-ktx:19.2.0'
+//    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+
+    implementation 'com.google.android.gms:play-services-ads:23.1.0'
 //    implementation 'com.google.android.gms:play-services-ads:19.3.0'
 
 //    implementation 'com.google.android.exoplayer:exoplayer:2.11.6'
