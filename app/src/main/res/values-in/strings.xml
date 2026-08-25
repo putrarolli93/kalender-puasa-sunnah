@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Kalender Puasa</string>
+    <string name="later">SKIP</string>
+    <string name="update_app">App Update Available</string>
+    <string name="update_now">UPDATE NOW</string>
+    <string name="dialog_update_available_message">You are on an older version. You can use the app only if you update it.</string>
+    <string name="select_language">Pilih Bahasa</string>
+
+    <!-- Code 1 -->
+    <string name="puasa_senin_kamis_title">Puasa Senin Kamis</string>
+    <string name="puasa_senin_kamis_desc">
+        Puasa yang dilaksanakan setiap hari Senin dan Kamis
+    </string>
+
+    <!-- Code 2 -->
+    <string name="puasa_ayamul_bidh_title">Puasa Ayyamul Bidh</string>
+    <string name="puasa_ayamul_bidh_desc">
+        Puasa 3 hari setiap pertengahan bulan Hijriah (tanggal 13, 14, 15)
+    </string>
+
+    <!-- Code 3 -->
+    <string name="puasa_ramadhan_title">Puasa Ramadhan</string>
+    <string name="puasa_ramadhan_desc">
+        Puasa wajib bagi umat Islam pada bulan Ramadhan
+    </string>
+
+    <!-- Code 4 -->
+    <string name="puasa_arafah_title">Puasa Arafah</string>
+    <string name="puasa_arafah_desc">
+        Puasa sunnah pada tanggal 9 Dzulhijjah (bagi yang tidak berhaji)
+    </string>
+
+    <!-- Code 5 -->
+    <string name="puasa_tasua_asyura_title">Puasa Tasu\'a &amp; Asyura</string>
+    <string name="puasa_tasua_asyura_desc">
+        Puasa sunnah tanggal 9 dan 10 Muharram
+    </string>
+
+    <!-- Code 6 -->
+    <string name="puasa_syawal_title">Puasa Syawal</string>
+    <string name="puasa_syawal_desc">
+        Puasa sunnah 6 hari syawal
+    </string>
+
+    <!-- Code 8 -->
+    <string name="haram_puasa_title">Haram Berpuasa / Hari Tasyrik</string>
+    <string name="haram_puasa_desc">
+        Idul Fitri, Idul Adha, dan hari Tasyrik
+    </string>
+</resources>

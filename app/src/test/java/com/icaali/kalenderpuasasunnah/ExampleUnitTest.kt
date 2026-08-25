@@ -1,4 +1,4 @@
-package com.muslimApp.kalenderpuasasunnah
+package com.icaali.kalenderpuasasunnah
 
 import org.junit.Test
 

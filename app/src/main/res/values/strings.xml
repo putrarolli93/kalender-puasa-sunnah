@@ -1,8 +1,50 @@
 <resources>
-    <string name="app_name">Kalender Puasa</string>
+    <string name="app_name">Fasting Calendar</string>
     <string name="later">SKIP</string>
     <string name="update_app">App Update Available</string>
     <string name="update_now">UPDATE NOW</string>
     <string name="dialog_update_available_message">You are on an older version. You can use the app only if you update it.</string>
+    <string name="select_language">Select Language</string>
+
+    <!-- Code 1 -->
+    <string name="puasa_senin_kamis_title">Monday &amp; Thursday Fasting</string>
+    <string name="puasa_senin_kamis_desc">
+        Voluntary fasting observed every Monday and Thursday
+    </string>
+
+    <!-- Code 2 -->
+    <string name="puasa_ayamul_bidh_title">Ayyamul Bidh Fasting</string>
+    <string name="puasa_ayamul_bidh_desc">
+        Three voluntary fasting days in the middle of each Hijri month (13th, 14th, 15th)
+    </string>
+
+    <!-- Code 3 -->
+    <string name="puasa_ramadhan_title">Ramadan Fasting</string>
+    <string name="puasa_ramadhan_desc">
+        Obligatory fasting for Muslims during the month of Ramadan
+    </string>
+
+    <!-- Code 4 -->
+    <string name="puasa_arafah_title">Arafah Fasting</string>
+    <string name="puasa_arafah_desc">
+        Voluntary fasting on the 9th of Dhul-Hijjah (for those not performing Hajj)
+    </string>
+
+    <!-- Code 5 -->
+    <string name="puasa_tasua_asyura_title">Tasu\'a &amp; Ashura Fasting</string>
+    <string name="puasa_tasua_asyura_desc">
+        Voluntary fasting on the 9th and 10th of Muharram
+    </string>
+    <!-- Code 6 -->
+    <string name="puasa_syawal_title">Shawwal Fasting</string>
+    <string name="puasa_syawal_desc">
+    Six days of voluntary fasting in Shawwal
+    </string>
+
+    <!-- Code 8 -->
+    <string name="haram_puasa_title">Prohibited Fasting / Tashreeq Days</string>
+    <string name="haram_puasa_desc">
+        Eid al-Fitr, Eid al-Adha, and the Days of Tashreeq
+    </string>
 
 </resources>

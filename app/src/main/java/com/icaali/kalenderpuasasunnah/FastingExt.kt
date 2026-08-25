@@ -77,6 +77,15 @@ fun generateTanggalModel(year: Int): List<TanggalModel> {
 
         when {
 
+            // ❌ Haram puasa - Idul Fitri
+            hijriMonth == 10 && hijriDay == 1 -> add(99)
+
+            // ❌ Haram puasa - Idul Adha
+            hijriMonth == 12 && hijriDay == 10 -> add(99)
+
+            // ❌ Haram puasa - Hari Tasyrik
+            hijriMonth == 12 && hijriDay in 11..13 -> add(99)
+
             // Ramadan
             hijriMonth == 9 -> add(3)
 
@@ -85,6 +94,12 @@ fun generateTanggalModel(year: Int): List<TanggalModel> {
 
             // Asyura
             hijriMonth == 1 && hijriDay == 10 -> add(5)
+
+            // Tasua
+            hijriMonth == 1 && hijriDay == 9 -> add(5)
+
+            // Syawal (2 Syawal)
+            hijriMonth == 10 && hijriDay == 2 -> add(6)
 
             // Ayyamul Bidh
             hijriDay in 13..15 -> add(2)

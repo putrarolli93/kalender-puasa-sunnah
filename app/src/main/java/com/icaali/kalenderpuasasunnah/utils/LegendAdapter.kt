@@ -50,44 +50,50 @@ class LegendAdapter(
 
                     1 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_senin_kamis)
-                        tvTitle.text = "Puasa Senin Kamis"
-                        tvDesc.text = "Puasa yang dilaksanakan setiap senin & kamis"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_senin_kamis)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_senin_kamis_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_senin_kamis_desc)
                     }
 
                     2 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_ayamul_bidh)
-                        tvTitle.text = "Puasa Ayyamul Bidh"
-                        tvDesc.text = "Puasa 3 hari setiap pertengahan Bulan Hijriah"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_ayamul_bidh)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_ayamul_bidh_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_ayamul_bidh_desc)
                     }
 
                     3 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_ramadhan)
-                        tvTitle.text = "Puasa Ramadhan"
-                        tvDesc.text = "Puasa Wajib umat islam pada bulan Ramadhan"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_ramadhan)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_ramadhan_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_ramadhan_desc)
                     }
 
                     4 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_arafah)
-                        tvTitle.text = "Puasa Arafah"
-                        tvDesc.text = "Puasa Sunnah 9 Dzulhijjah(Bagi yang tidak Haji)"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_arafah)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_arafah_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_arafah_desc)
                     }
 
                     5 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_asyura)
-                        tvTitle.text = "Puasa Tasu'a & Asyura"
-                        tvDesc.text = "Puasa Sunnah 10 Muharram & 1 hari sebelum/sesudah"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_asyura)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_tasua_asyura_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_tasua_asyura_desc)
+                    }
+                    6 -> {
+                        vcolorLegend.background =
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_syawal)
+                        tvTitle.text = itemView.context.getString(R.string.puasa_syawal_title)
+                        tvDesc.text = itemView.context.getString(R.string.puasa_syawal_desc)
                     }
 
-                    8 -> {
+                    99 -> {
                         vcolorLegend.background =
-                            AppCompatResources.getDrawable(root.context, R.drawable.bg_haram_puasa)
-                        tvTitle.text = "Haram Berpuasa/Hari Tasyrik"
-                        tvDesc.text = "Idul Fitri, Idul adha & Hari Tasyrik"
+                            AppCompatResources.getDrawable(itemView.context, R.drawable.bg_haram_puasa)
+                        tvTitle.text = itemView.context.getString(R.string.haram_puasa_title)
+                        tvDesc.text = itemView.context.getString(R.string.haram_puasa_desc)
                     }
                 }
 

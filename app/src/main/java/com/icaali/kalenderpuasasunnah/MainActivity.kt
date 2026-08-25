@@ -1,24 +1,40 @@
 package com.icaali.kalenderpuasasunnah
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.icaali.kalenderpuasasunnah.databinding.ActivityMainBinding
 import com.icaali.kalenderpuasasunnah.databinding.CalendarDayLayoutBinding
 import com.icaali.kalenderpuasasunnah.databinding.LayoutCalendarLegendHeaderBinding
@@ -31,6 +47,7 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
 import com.icaali.kalenderpuasasunnah.detail.DetailPuasaActivity
+import com.icaali.kalenderpuasasunnah.helper.LocaleHelper
 import com.icaali.kalenderpuasasunnah.utils.LegendAdapter
 import org.threeten.bp.*
 import org.threeten.bp.format.DateTimeFormatter
@@ -44,7 +61,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
 
     private val daysOfWeek = daysOfWeekFromLocale()
     private val today = LocalDate.now()
-    private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM", Locale("id", "ID"))
+//    private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM", Locale.getDefault())
     private fun Long.startDateMillis(): Long = this * DateUtils.SECOND_IN_MILLIS
     private val puasaEvent: MutableList<TanggalPuasa> = mutableListOf()
 
@@ -63,12 +80,23 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    private var interstitialAd: InterstitialAd? = null
+    private var scrollCount = 0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(
+                Color.TRANSPARENT, Color.TRANSPARENT
+            )
+        )
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlackImage)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         binding.scMain.isNestedScrollingEnabled = false
         this.tanggalJson = generateMultiYear(
             nowYear - 1,
@@ -90,21 +118,125 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         binding.iShare.btnShare.setOnClickListener {
             shareApp()
         }
-        initBannerAds()
+        binding.ivContactUs.setOnClickListener {
+            sentEmailToContact()
+        }
+        loadBannerAds()
+        loadInterstitial()
+        setupLanguageSpinner()
+        Log.d("LANG", Locale.getDefault().language)
     }
 
-    private fun initBannerAds() {
-        MobileAds.initialize(this)
+//    private fun sentEmailToContact() {
+//        val email = "developers@appmuslim.com"
+//
+//        val intent = Intent(Intent.ACTION_SENDTO).apply {
+//            data = Uri.parse("mailto:$email")
+//        }
+//
+//        startActivity(intent)
+//    }
 
+    private fun sentEmailToContact() {
+        val email = "developers@appmuslim.com"
+
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+        }
+
+        try {
+            startActivity(Intent.createChooser(intent, "Send Email"))
+        } catch (e: Exception) {
+            showNoEmailAppDialog(email)
+        }
+    }
+
+    private fun showNoEmailAppDialog(email: String) {
+        AlertDialog.Builder(this)
+            .setTitle("No Email App")
+            .setMessage("No email app found. Please email us at:\n$email")
+            .setPositiveButton("Copy Email") { _, _ ->
+                // Copy email to clipboard
+                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("Email", email)
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(this, "Email copied to clipboard", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        val lang = LocaleHelper.getSavedLanguage(newBase)
+        val context = LocaleHelper.setLocale(newBase, lang)
+        super.attachBaseContext(context)
+    }
+
+    private fun setupLanguageSpinner() {
+        val languages = listOf("EN", "ID")
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            languages
+        )
+        binding.spLanguage.adapter = adapter
+
+        val savedLang = LocaleHelper.getSavedLanguage(this)
+        val selectedIndex = if (savedLang == "id") 1 else 0
+
+        binding.spLanguage.setSelection(selectedIndex, false)
+
+        binding.spLanguage.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+                    val newLang = if (position == 1) "id" else "en"
+
+                    if (newLang != savedLang) {
+                        LocaleHelper.setLocale(this@MainActivity, newLang)
+                        recreate()
+                    }
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+    }
+
+    private fun loadBannerAds() {
+        MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
+    }
+
+    private fun loadInterstitial() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            this,
+            /*"ca-app-pub-5079073523461972/8339770691",*/ "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    interstitialAd = ad
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    interstitialAd = null
+                }
+            }
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun generateMultiYear(startYear: Int, endYear: Int): List<TanggalModel> {
         val result = mutableListOf<TanggalModel>()
         for (year in startYear..endYear) {
-            result.addAll(generateTanggalModel(year)!!)
+            result.addAll(generateTanggalModel(year))
         }
         return result
     }
@@ -133,7 +265,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         val currentMonth = YearMonth.now()
         val firstMonth = YearMonth.of(nowYear - 1, 1)   // Januari tahun lalu
         val lastMonth = YearMonth.of(nowYear + 1, 12)    // Desember tahun depan
-        val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
+//        val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
         binding.calendarView.setup(firstMonth, lastMonth, daysOfWeek.first())
         binding.calendarView.scrollToMonth(currentMonth)
         onSetHeaderBinder()
@@ -289,8 +421,8 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                             )
                             container.marker.visibility = View.INVISIBLE
                         }
-                        8 -> {
-                            textView.background = getDrawable(R.drawable.bg_haram_puasa)
+                        6 -> {
+                            textView.background = getDrawable(R.drawable.bg_syawal)
                             textView.setTextColor(
                                 ContextCompat.getColor(
                                     this@MainActivity,
@@ -301,6 +433,22 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                                 ContextCompat.getColor(
                                     this@MainActivity,
                                     R.color.colorWhite
+                                )
+                            )
+                            container.marker.visibility = View.INVISIBLE
+                        }
+                        99 -> {
+                            textView.background = getDrawable(R.drawable.bg_haram_puasa)
+                            textView.setTextColor(
+                                ContextCompat.getColor(
+                                    this@MainActivity,
+                                    R.color.colorWhitesecond
+                                )
+                            )
+                            textArabicNumber.setTextColor(
+                                ContextCompat.getColor(
+                                    this@MainActivity,
+                                    R.color.colorWhitesecond
                                 )
                             )
                             container.marker.visibility = View.INVISIBLE
@@ -344,7 +492,13 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                     if (day.date == today) {
                         textView.setTypeface(null, Typeface.BOLD)
                         val s = day.date.dayOfMonth.toString()
-                        container.textView.text = Html.fromHtml("<u>$s</u>")
+                        val underlinedText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            Html.fromHtml("<u>$s</u>", Html.FROM_HTML_MODE_LEGACY)
+                        } else {
+                            @Suppress("DEPRECATION")
+                            Html.fromHtml("<u>$s</u>")
+                        }
+                        container.textView.text = underlinedText
                         container.marker.visibility = View.VISIBLE
                     }
                 } else {
@@ -366,20 +520,23 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
             @RequiresApi(Build.VERSION_CODES.M)
             override fun bind(container: MonthViewContainer, month: CalendarMonth) {
                 val legendLayout = container.binding.legendLayout
-                if (legendLayout.tag == null) {
-                    legendLayout.tag = month.yearMonth
-                    legendLayout.children.map { it as TextView }
-                        .forEachIndexed { index, tv ->
-                            tv.text = daysOfWeek[index].getDisplayName(
-                                TextStyle.SHORT,
-                                Locale("id", "ID")
-                            ).toString()
-                            if (index == 6) {
+                legendLayout.children.map { it as TextView }
+                    .forEachIndexed { index, tv ->
+
+                        tv.text = daysOfWeek[index].getDisplayName(
+                            TextStyle.SHORT,
+                            Locale.getDefault()
+                        )
+
+                        if (index == 6) {
+                            if (Locale.getDefault().language == "in") {
                                 tv.text = "Ahad"
-                                tv.setBackgroundColor(getColor(R.color.colorPrimaryred))
+                            } else {
+                                tv.text = "Sun"
                             }
+                            tv.setBackgroundColor(getColor(R.color.colorPrimaryred))
                         }
-                }
+                    }
             }
         }
     }
@@ -400,7 +557,23 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         // Sudah dipindah ke onCreate agar hanya dijalankan sekali
 
         binding.calendarView.monthScrollListener = { month ->
-            val title = "${monthTitleFormatter.format(month.yearMonth)} ${month.yearMonth.year}"
+            //Start Logic to load interstial Ads
+            scrollCount++
+            if (scrollCount >= 4) {
+                if (interstitialAd != null) {
+                    interstitialAd?.show(this)
+                    scrollCount = 0
+                    interstitialAd = null
+                    loadInterstitial()
+                }
+            }
+            //End Logic to load interstial Ads
+            val formatter = DateTimeFormatter.ofPattern(
+                "MMMM",
+                Locale.getDefault()
+            )
+
+            val title = "${formatter.format(month.yearMonth)} ${month.yearMonth.year}"
             binding.exMonthYearText.text = title
             this.monthSelected = month.month
             this.yearSelectDate = month.yearMonth.year

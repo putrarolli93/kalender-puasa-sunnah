@@ -29,7 +29,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.d(TAG, "Dikirim dari: ${remoteMessage.from}")
 
-        remoteMessage?.let { message ->
+        remoteMessage.let { message ->
 //            Log.i(TAG, message.getData().get("message"))
 
             notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -73,9 +73,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.createNotificationChannel(adminChannel)
     }
 
-    override fun onNewToken(p0: String?) {
-        super.onNewToken(p0)
-
-    }
+//    override fun onNewToken(p0: String?) {
+//        super.onNewToken(p0)
+//
+//    }
 
 }
