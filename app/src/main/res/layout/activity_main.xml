@@ -39,7 +39,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="@id/imgMain"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/ivInfo"/>
 
             <ImageView
                 android:id="@+id/ivContactUs"
@@ -53,15 +53,15 @@
                 android:background="@drawable/ic_contact" />
 
             <ImageView
-                android:id="@+id/ivLiveMadina"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:visibility="gone"
-                android:layout_marginEnd="10dp"
+                android:id="@+id/ivInfo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="visible"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="22dp"
-                app:layout_constraintEnd_toStartOf="@id/ivContactUs"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/nabawi" />
+                android:background="@drawable/ic_info" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clHeader"
@@ -79,11 +79,11 @@
                     android:layout_height="36dp"
                     android:layout_marginEnd="22dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:tint="@color/colorWhiteImage"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_chevron_left" />
+                    app:srcCompat="@drawable/ic_chevron_left"
+                    app:tint="@color/colorWhiteImage" />
 
                 <TextView
                     android:id="@+id/exMonthYearText"
@@ -117,11 +117,11 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:tint="@color/colorWhiteImage"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_chevron_right" />
+                    app:srcCompat="@drawable/ic_chevron_right"
+                    app:tint="@color/colorWhiteImage" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

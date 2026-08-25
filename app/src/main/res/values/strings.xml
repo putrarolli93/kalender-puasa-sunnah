@@ -5,6 +5,8 @@
     <string name="update_now">UPDATE NOW</string>
     <string name="dialog_update_available_message">You are on an older version. You can use the app only if you update it.</string>
     <string name="select_language">Select Language</string>
+    <string name="kalender_text">Fasting</string>
+    <string name="puasa_text">Calendar</string>
 
     <!-- Code 1 -->
     <string name="puasa_senin_kamis_title">Monday &amp; Thursday Fasting</string>
@@ -46,5 +48,9 @@
     <string name="haram_puasa_desc">
         Eid al-Fitr, Eid al-Adha, and the Days of Tashreeq
     </string>
+
+    <string name="info_title">Calendar Information</string>
+    <string name="info_message">This application uses the Umm al-Qura (Saudi Arabia) calendar system. Please note that there may be slight differences (usually 1 day) compared to other methods or local government announcements. If you find any discrepancies, please inform the developer so we can improve it.</string>
+    <string name="ok">OK</string>
 
 </resources>

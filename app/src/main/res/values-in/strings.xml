@@ -2,9 +2,11 @@
     <string name="app_name">Kalender Puasa</string>
     <string name="later">SKIP</string>
     <string name="update_app">App Update Available</string>
-    <string name="update_now">UPDATE NOW</string>
-    <string name="dialog_update_available_message">You are on an older version. You can use the app only if you update it.</string>
+    <string name="update_now">UPDATE SEKARANG</string>
+    <string name="dialog_update_available_message">Anda menggunakan versi lama. Anda hanya dapat menggunakan aplikasi jika Anda memperbaruinya.</string>
     <string name="select_language">Pilih Bahasa</string>
+    <string name="kalender_text">Kalender</string>
+    <string name="puasa_text">Puasa</string>
 
     <!-- Code 1 -->
     <string name="puasa_senin_kamis_title">Puasa Senin Kamis</string>
@@ -39,7 +41,7 @@
     <!-- Code 6 -->
     <string name="puasa_syawal_title">Puasa Syawal</string>
     <string name="puasa_syawal_desc">
-        Puasa sunnah 6 hari syawal
+        Puasa sunnah 6 hari Syawal
     </string>
 
     <!-- Code 8 -->
@@ -47,4 +49,8 @@
     <string name="haram_puasa_desc">
         Idul Fitri, Idul Adha, dan hari Tasyrik
     </string>
+
+    <string name="info_title">Informasi Kalender</string>
+    <string name="info_message">Aplikasi ini menggunakan sistem penanggalan Umm Al-Qura (Arab Saudi). Mohon diperhatikan bahwa mungkin terdapat sedikit perbedaan (biasanya selisih 1 hari) dengan metode lain atau pengumuman pemerintah setempat (seperti Sidang Isbat Kemenag di Indonesia). Jika Anda menemukan ketidaksesuaian, mohon informasikan kepada pengembang agar kami dapat memperbaikinya.</string>
+    <string name="ok">OK</string>
 </resources>

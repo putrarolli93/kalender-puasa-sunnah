@@ -33,7 +33,7 @@
           app:layout_constraintTop_toTopOf="parent"
           android:textSize="18sp"
           android:textStyle="bold"
-          android:text="Kalender"/>
+          android:text="@string/kalender_text"/>
 
       <androidx.appcompat.widget.AppCompatTextView
           android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
           android:textColor="#E7A561"
           android:textSize="18sp"
           android:textStyle="bold"
-          android:text="Puasa"/>
+          android:text="@string/puasa_text"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

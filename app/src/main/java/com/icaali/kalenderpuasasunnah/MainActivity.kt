@@ -121,6 +121,9 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         binding.ivContactUs.setOnClickListener {
             sentEmailToContact()
         }
+        binding.ivInfo.setOnClickListener {
+            showInfoDialog()
+        }
         loadBannerAds()
         loadInterstitial()
         setupLanguageSpinner()
@@ -164,6 +167,14 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
                 Toast.makeText(this, "Email copied to clipboard", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showInfoDialog() {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.info_title))
+            .setMessage(getString(R.string.info_message))
+            .setPositiveButton(getString(R.string.ok), null)
             .show()
     }
 
@@ -218,7 +229,7 @@ class MainActivity : AppCompatActivity(), LegendAdapter.OnLegendedListener {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             this,
-            /*"ca-app-pub-5079073523461972/8339770691",*/ "ca-app-pub-3940256099942544/1033173712",
+            "ca-app-pub-5079073523461972/8339770691", //"ca-app-pub-3940256099942544/1033173712",
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
